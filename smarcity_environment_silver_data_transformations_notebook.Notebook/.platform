@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "smarcity_environment_silver_data_transformations_notebook"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "db60368a-6bf7-84d6-4fbf-28d0c9096ffd"
+  }
+}

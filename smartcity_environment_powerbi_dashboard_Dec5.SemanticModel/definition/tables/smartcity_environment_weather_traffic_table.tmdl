@@ -1,0 +1,260 @@
+table smartcity_environment_weather_traffic_table
+	lineageTag: 7ae292fd-735e-4c5c-8a3f-91c0298e843d
+
+	column lat
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 13b5f212-a3e5-40c2-95a8-0761f24aab59
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column lon
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 84a7f248-fdb6-4bdc-a9d4-334ff93f2181
+		summarizeBy: none
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+	column traffic_time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 907ecf2c-a1cd-4f43-a49e-dcc352300ab1
+		summarizeBy: none
+		sourceColumn: traffic_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column weather_time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: cd5a1c8d-70d8-4a0b-8479-762cb5bf4c9b
+		summarizeBy: none
+		sourceColumn: weather_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_c
+		dataType: double
+		sourceProviderType: varchar(8000)
+		lineageTag: 3a4e1bc7-75f0-4649-9561-c571dc93cda2
+		summarizeBy: sum
+		sourceColumn: temp_c
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column humidity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: varchar(8000)
+		lineageTag: 61f612d2-fe68-4cbe-bd9e-9d163ab5c4cd
+		summarizeBy: sum
+		sourceColumn: humidity
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column condition_text
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: eb4972c9-c3ae-45ca-8809-46f7249a51a9
+		summarizeBy: none
+		sourceColumn: condition_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column condition_icon
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 13fd91de-28ad-45b2-9a11-df5b1303b47c
+		summarizeBy: none
+		sourceColumn: condition_icon
+
+		annotation SummarizationSetBy = Automatic
+
+	column condition_code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b12971f6-df7f-42e3-b843-b47de2a4eb24
+		summarizeBy: none
+		sourceColumn: condition_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_kph
+		dataType: double
+		sourceProviderType: varchar(8000)
+		lineageTag: 714898ba-8167-419b-a941-11e1b6cce496
+		summarizeBy: sum
+		sourceColumn: wind_kph
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pressure_mb
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 789842b1-b862-44b7-a1f1-f80423038afe
+		summarizeBy: none
+		sourceColumn: pressure_mb
+
+		annotation SummarizationSetBy = Automatic
+
+	column precip_mm
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 90047b8c-c5eb-40ce-b6c7-ab6ae6112353
+		summarizeBy: none
+		sourceColumn: precip_mm
+
+		annotation SummarizationSetBy = Automatic
+
+	column cloud
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5d9b58f2-28b8-476d-98d9-161e45a50ed9
+		summarizeBy: none
+		sourceColumn: cloud
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d6f1061f-701d-4560-9549-61abbe3c232a
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column congestion
+		dataType: double
+		sourceProviderType: float
+		lineageTag: dd60a692-4e4d-470d-815e-8904d288596e
+		summarizeBy: sum
+		sourceColumn: congestion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column currentSpeed
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 6d8defcf-fcde-4dbd-af1c-7dd9fb41b827
+		summarizeBy: sum
+		sourceColumn: currentSpeed
+
+		annotation SummarizationSetBy = Automatic
+
+	column roadCLosure
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 0a593988-94c2-40dc-a625-1b8f3f14c50f
+		summarizeBy: none
+		sourceColumn: roadCLosure
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_co
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 243949c2-ee1d-4c8a-bac4-752051d3b188
+		summarizeBy: none
+		sourceColumn: airquality_co
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_no2
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0fbbe4bc-6bb3-4ef2-80d0-8873f5a855b5
+		summarizeBy: none
+		sourceColumn: airquality_no2
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_o3
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 47871408-eb28-4140-b775-e372f29ad8d6
+		summarizeBy: none
+		sourceColumn: airquality_o3
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_so2
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2fda74d0-3bbd-4809-8072-8ca06066e322
+		summarizeBy: none
+		sourceColumn: airquality_so2
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_day
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a05ca645-b988-4f43-83ea-80691cb0cc6c
+		summarizeBy: none
+		sourceColumn: is_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour = smartcity_environment_weather_traffic_table[traffic_time]
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: 515a668c-71bc-4e22-baaa-4e7ebc8febae
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column StartOfHour_traffic = ```
+			
+			TIME( HOUR(smartcity_environment_weather_traffic_table[traffic_time]), 0, 0 )
+			
+			```
+		formatString: hh:nn
+		lineageTag: 597cc3a3-89c1-4834-8982-c60f8f075a29
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition smartcity_environment_weather_traffic_table = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("ugpczvjbpsyupavdgotuwh3uxa-rpncvm3qe4wuvce6osecx5cq2e.datawarehouse.fabric.microsoft.com", "smartcity_environment_lakehouse_gold"),
+				    dbo_smartcity_environment_weather_traffic_table = Source{[Schema="dbo",Item="smartcity_environment_weather_traffic_table"]}[Data]
+				in
+				    dbo_smartcity_environment_weather_traffic_table
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,4563 @@
+{
+  "sources": [
+    {
+      "id": "28847a70-eb28-4023-b148-535b0a72f4bd",
+      "name": "trafficapi-eventhub-notebook",
+      "type": "CustomEndpoint",
+      "properties": {},
+      "inputSchemas": [
+        {
+          "name": "m7spht",
+          "schema": {
+            "columns": [
+              {
+                "name": "flowSegmentData",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "frc",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "confidence",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "roadClosure",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "coordinates",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "coordinate",
+                        "type": "Array",
+                        "fields": null,
+                        "items": {
+                          "name": null,
+                          "type": "Record",
+                          "fields": [
+                            {
+                              "name": "latitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            },
+                            {
+                              "name": "longitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            }
+                          ],
+                          "items": null
+                        }
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "@version",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "long",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "64345f68-80f8-4ef8-8d80-a1ea2cadba82",
+      "name": "weatherapi-eventhub-notebook",
+      "type": "CustomEndpoint",
+      "properties": {},
+      "inputSchemas": [
+        {
+          "name": "pl0zo6",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "73c80d0d-0a4e-4c02-8e41-7a183cf447ad",
+      "name": "TrafficapiRealtimeKafkaEventstream",
+      "type": "ConfluentCloud",
+      "properties": {
+        "dataConnectionId": "9ca6ffc8-6e95-44a2-afa2-fb5256621572",
+        "topic": "Realtime_traffic_api",
+        "consumerGroupName": "kafka_fabric_trafficapi",
+        "autoOffsetReset": "Latest"
+      },
+      "inputSchemas": [
+        {
+          "name": "19f5a6z",
+          "schema": {
+            "columns": [
+              {
+                "name": "flowSegmentData",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "frc",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "confidence",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "roadClosure",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "coordinates",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "coordinate",
+                        "type": "Array",
+                        "fields": null,
+                        "items": {
+                          "name": null,
+                          "type": "Record",
+                          "fields": [
+                            {
+                              "name": "latitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            },
+                            {
+                              "name": "longitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            }
+                          ],
+                          "items": null
+                        }
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "@version",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "f9hewl",
+          "schema": {
+            "columns": [
+              {
+                "name": "flowSegmentData",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "frc",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "confidence",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "roadClosure",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "coordinates",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "coordinate",
+                        "type": "Array",
+                        "fields": null,
+                        "items": {
+                          "name": null,
+                          "type": "Record",
+                          "fields": [
+                            {
+                              "name": "latitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            },
+                            {
+                              "name": "longitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            }
+                          ],
+                          "items": null
+                        }
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "@version",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "long",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "c775e3c4-29fe-42a3-bb8d-b40cee3e38a4",
+      "name": "WeatherapiRealtimeKafkasource",
+      "type": "ConfluentCloud",
+      "properties": {
+        "dataConnectionId": "6b594428-711e-4f9a-a3c2-38cd83e34f86",
+        "topic": "Realtime_weather_api",
+        "consumerGroupName": "kafka_fabric_weatherapi",
+        "autoOffsetReset": "Latest"
+      },
+      "inputSchemas": [
+        {
+          "name": "1pkknwg",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [],
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "1wqze7d",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "clsrcy",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "fqx2h9",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "h21omf",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        },
+        {
+          "name": "uq5h15",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "destinations": [
+    {
+      "id": "7825afbf-191c-44ef-95b6-da0f109e2498",
+      "name": "SmartCity-Environment-Lakehouse-Traffic",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "0bbd216e-256c-8693-440c-130ea0228bec",
+        "schema": "trafficapi_kafka_schema",
+        "deltaTable": "trafficapi_kafka_table",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "Trafficapi_Fields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "Trafficapi_Fields",
+          "schema": {
+            "columns": [
+              {
+                "name": "normal speed without congestion",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "currentTravelTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "roadClosure",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "freeFlowTravelTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "congestion",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "currentSpeed",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "current_time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "8cffc70d-d7bd-404f-a5f8-e863755fe19e",
+      "name": "smartcity-environment-eventhouse-weather",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "DirectIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "4909e164-6275-b816-4816-142f95a59856",
+        "tableName": "smartcity_environment_eventhouse_weather_kqltable",
+        "connectionName": "smartcity_environment_realtimeweather",
+        "mappingRuleName": "smartcity_environment_eventhouse_weather_kqltable_mapping"
+      },
+      "inputNodes": [
+        {
+          "name": "Weatherstream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "Weatherstream",
+          "schema": {
+            "columns": [
+              {
+                "name": "name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "region",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lon",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "tz_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "localtime_epoch",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "localtime",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "last_updated_epoch",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "last_updated",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temp_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "is_day",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "text",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "icon",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "code",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "wind_kph",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "wind_degree",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "wind_dir",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pressure_mb",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pressure_in",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precip_mm",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precip_in",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "humidity",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "cloud",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "feelslike_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "windchill_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "heatindex_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "dewpoint_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "vis_miles",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "gust_mph",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "gust_kph",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "co",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "no2",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "o3",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "so2",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pm2_5",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pm10",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "us-epa-index",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "gb-defra-index",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "current_time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "c2c1e7cd-719e-4b55-82c3-6dab861e45f1",
+      "name": "smartcity-environment-eventhouse-traffic",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "DirectIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "4909e164-6275-b816-4816-142f95a59856",
+        "tableName": "smartcity_environment_eventhouse_traffic_kqltable",
+        "connectionName": "smartcity_environment_realtime_traffic",
+        "mappingRuleName": "smartcity_environment_eventhouse_traffic_kqltable_mapping"
+      },
+      "inputNodes": [
+        {
+          "name": "TrafficStream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "TrafficStream",
+          "schema": {
+            "columns": [
+              {
+                "name": "normal speed without congestion",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "currentTravelTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "roadClosure",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "freeFlowTravelTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "congestion",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "currentSpeed",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "current_time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fd9b3ec8-d60d-453f-ad94-725470b4bc7e",
+      "name": "SmartCity-Environment-Lakehouse-Weather",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "0bbd216e-256c-8693-440c-130ea0228bec",
+        "schema": "weatherapi_kafka_schema",
+        "deltaTable": "weatherapi_kafka_table",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "Weatherapi_Fields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "Weatherapi_Fields",
+          "schema": {
+            "columns": [
+              {
+                "name": "name",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "region",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "country",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lon",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "tz_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "localtime_epoch",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "localtime",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "last_updated_epoch",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "last_updated",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "temp_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "is_day",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "text",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "icon",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "code",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "wind_kph",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "wind_degree",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "wind_dir",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pressure_mb",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pressure_in",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precip_mm",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precip_in",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "humidity",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "cloud",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "feelslike_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "windchill_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "heatindex_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "dewpoint_c",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "vis_miles",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "gust_mph",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "gust_kph",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "co",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "no2",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "o3",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "so2",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pm2_5",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "pm10",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "us-epa-index",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "gb-defra-index",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "current_time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "458c01aa-43a0-4c94-b697-c35833f3a4d1",
+      "name": "TrafficStream",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "Trafficapi_Fields"
+        }
+      ]
+    },
+    {
+      "id": "7133d1dd-2269-4d17-a1f9-1ce1c7dfded2",
+      "name": "Weatherstream",
+      "type": "DerivedStream",
+      "properties": {
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "Weatherapi_Fields"
+        }
+      ]
+    },
+    {
+      "id": "f089260f-f51b-4912-a14a-c1827a3a14a1",
+      "name": "test-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "trafficapi-eventhub-notebook"
+        },
+        {
+          "name": "TrafficapiRealtimeKafkaEventstream"
+        },
+        {
+          "name": "weatherapi-eventhub-notebook"
+        },
+        {
+          "name": "WeatherapiRealtimeKafkasource"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "Trafficapi_Fields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "test-stream",
+          "schemaName": "m7spht"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "flowSegmentData",
+                "columnPathSegments": [
+                  {
+                    "field": "freeFlowSpeed"
+                  }
+                ]
+              }
+            },
+            "alias": "normal speed without congestion"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "flowSegmentData",
+                "columnPathSegments": [
+                  {
+                    "field": "currentTravelTime"
+                  }
+                ]
+              }
+            },
+            "alias": "currentTravelTime"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "flowSegmentData",
+                "columnPathSegments": [
+                  {
+                    "field": "roadClosure"
+                  }
+                ]
+              }
+            },
+            "alias": "roadClosure"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "flowSegmentData",
+                "columnPathSegments": [
+                  {
+                    "field": "freeFlowTravelTime"
+                  }
+                ]
+              }
+            },
+            "alias": "freeFlowTravelTime"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "flowSegmentData",
+                "columnPathSegments": [
+                  {
+                    "field": "confidence"
+                  }
+                ]
+              }
+            },
+            "alias": "congestion"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "flowSegmentData",
+                "columnPathSegments": [
+                  {
+                    "field": "currentSpeed"
+                  }
+                ]
+              }
+            },
+            "alias": "currentSpeed"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "city",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "city"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "SystemTimestamp",
+              "arguments": []
+            },
+            "alias": "current_time"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "lat",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "lat"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "test-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "flowSegmentData",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "frc",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowSpeed",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "currentTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "freeFlowTravelTime",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "confidence",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "roadClosure",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "coordinates",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "coordinate",
+                        "type": "Array",
+                        "fields": null,
+                        "items": {
+                          "name": null,
+                          "type": "Record",
+                          "fields": [
+                            {
+                              "name": "latitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            },
+                            {
+                              "name": "longitude",
+                              "type": "Float",
+                              "fields": null,
+                              "items": null
+                            }
+                          ],
+                          "items": null
+                        }
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "@version",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "long",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Weatherapi_Fields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "test-stream",
+          "schemaName": "fqx2h9"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "name"
+                  }
+                ]
+              }
+            },
+            "alias": "name"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "region"
+                  }
+                ]
+              }
+            },
+            "alias": "region"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "country"
+                  }
+                ]
+              }
+            },
+            "alias": "country"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "lat"
+                  }
+                ]
+              }
+            },
+            "alias": "lat"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "lon"
+                  }
+                ]
+              }
+            },
+            "alias": "lon"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "tz_id"
+                  }
+                ]
+              }
+            },
+            "alias": "tz_id"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "localtime_epoch"
+                  }
+                ]
+              }
+            },
+            "alias": "localtime_epoch"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "location",
+                "columnPathSegments": [
+                  {
+                    "field": "localtime"
+                  }
+                ]
+              }
+            },
+            "alias": "localtime"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "last_updated_epoch"
+                  }
+                ]
+              }
+            },
+            "alias": "last_updated_epoch"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "last_updated"
+                  }
+                ]
+              }
+            },
+            "alias": "last_updated"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "temp_c"
+                  }
+                ]
+              }
+            },
+            "alias": "temp_c"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "is_day"
+                  }
+                ]
+              }
+            },
+            "alias": "is_day"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "condition"
+                  },
+                  {
+                    "field": "text"
+                  }
+                ]
+              }
+            },
+            "alias": "text"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "condition"
+                  },
+                  {
+                    "field": "icon"
+                  }
+                ]
+              }
+            },
+            "alias": "icon"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "condition"
+                  },
+                  {
+                    "field": "code"
+                  }
+                ]
+              }
+            },
+            "alias": "code"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "wind_kph"
+                  }
+                ]
+              }
+            },
+            "alias": "wind_kph"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "wind_degree"
+                  }
+                ]
+              }
+            },
+            "alias": "wind_degree"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "wind_dir"
+                  }
+                ]
+              }
+            },
+            "alias": "wind_dir"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "pressure_mb"
+                  }
+                ]
+              }
+            },
+            "alias": "pressure_mb"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "pressure_in"
+                  }
+                ]
+              }
+            },
+            "alias": "pressure_in"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "precip_mm"
+                  }
+                ]
+              }
+            },
+            "alias": "precip_mm"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "precip_in"
+                  }
+                ]
+              }
+            },
+            "alias": "precip_in"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "humidity"
+                  }
+                ]
+              }
+            },
+            "alias": "humidity"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "cloud"
+                  }
+                ]
+              }
+            },
+            "alias": "cloud"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "feelslike_c"
+                  }
+                ]
+              }
+            },
+            "alias": "feelslike_c"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "windchill_c"
+                  }
+                ]
+              }
+            },
+            "alias": "windchill_c"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "heatindex_c"
+                  }
+                ]
+              }
+            },
+            "alias": "heatindex_c"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "dewpoint_c"
+                  }
+                ]
+              }
+            },
+            "alias": "dewpoint_c"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "vis_miles"
+                  }
+                ]
+              }
+            },
+            "alias": "vis_miles"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "gust_mph"
+                  }
+                ]
+              }
+            },
+            "alias": "gust_mph"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "gust_kph"
+                  }
+                ]
+              }
+            },
+            "alias": "gust_kph"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "co"
+                  }
+                ]
+              }
+            },
+            "alias": "co"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "no2"
+                  }
+                ]
+              }
+            },
+            "alias": "no2"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "o3"
+                  }
+                ]
+              }
+            },
+            "alias": "o3"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "so2"
+                  }
+                ]
+              }
+            },
+            "alias": "so2"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "pm2_5"
+                  }
+                ]
+              }
+            },
+            "alias": "pm2_5"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "pm10"
+                  }
+                ]
+              }
+            },
+            "alias": "pm10"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "us-epa-index"
+                  }
+                ]
+              }
+            },
+            "alias": "us-epa-index"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "current",
+                "columnPathSegments": [
+                  {
+                    "field": "air_quality"
+                  },
+                  {
+                    "field": "gb-defra-index"
+                  }
+                ]
+              }
+            },
+            "alias": "gb-defra-index"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "SystemTimestamp",
+              "arguments": []
+            },
+            "alias": "current_time"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "test-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "location",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "name",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "region",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "country",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lat",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "lon",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "tz_id",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "localtime",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "current",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "last_updated_epoch",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "last_updated",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "temp_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "is_day",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "condition",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "text",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "icon",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "code",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  },
+                  {
+                    "name": "wind_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_degree",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "wind_dir",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_mb",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "pressure_in",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_mm",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "precip_in",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "humidity",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "cloud",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "feelslike_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "windchill_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "heatindex_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_c",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "dewpoint_f",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_km",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "vis_miles",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "uv",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_mph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "gust_kph",
+                    "type": "Float",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "air_quality",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "co",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "no2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "o3",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "so2",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm2_5",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "pm10",
+                        "type": "Float",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "us-epa-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      },
+                      {
+                        "name": "gb-defra-index",
+                        "type": "BigInt",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

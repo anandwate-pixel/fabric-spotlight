@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDatabase",
+    "displayName": "smartcity_environment_eventhouse_kql_database",
+    "description": "smartcity_environment_eventhouse_kql_database"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4909e164-6275-b816-4816-142f95a59856"
+  }
+}

@@ -1,0 +1,851 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "840909f2ed2f4cce84597796f9c1115f_74b7175e_002D08b6_002D4d2b_002Daee2_002D96bb7d934dfc",
+        "sourceLineageTag": "[dbo].[840909f2ed2f4cce84597796f9c1115f_74b7175e_002D08b6_002D4d2b_002Daee2_002D96bb7d934dfc]",
+        "columns": [
+          {
+            "name": "Column1",
+            "dataType": "int64",
+            "sourceColumn": "Column1",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Column1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column2",
+            "dataType": "int64",
+            "sourceColumn": "Column2",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Column2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column3",
+            "dataType": "boolean",
+            "sourceColumn": "Column3",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "Column3",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column4",
+            "dataType": "int64",
+            "sourceColumn": "Column4",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Column4",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column5",
+            "dataType": "double",
+            "sourceColumn": "Column5",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Column5",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Column6",
+            "dataType": "int64",
+            "sourceColumn": "Column6",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Column6",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column7",
+            "dataType": "string",
+            "sourceColumn": "Column7",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column8",
+            "dataType": "string",
+            "sourceColumn": "Column8",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column8",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column9",
+            "dataType": "string",
+            "sourceColumn": "Column9",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column9",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column10",
+            "dataType": "dateTime",
+            "sourceColumn": "Column10",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Column10",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column11",
+            "dataType": "dateTime",
+            "sourceColumn": "Column11",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Column11",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "840909f2ed2f4cce84597796f9c1115f_74b7175e_002D08b6_002D4d2b_002Daee2_002D96bb7d934dfc",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "840909f2ed2f4cce84597796f9c1115f_d5858d60_002D05f6_002D4dfd_002Db081_002Dfeeb28bb8e28",
+        "sourceLineageTag": "[dbo].[840909f2ed2f4cce84597796f9c1115f_d5858d60_002D05f6_002D4dfd_002Db081_002Dfeeb28bb8e28]",
+        "columns": [
+          {
+            "name": "Column1",
+            "dataType": "string",
+            "sourceColumn": "Column1",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column1",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column2",
+            "dataType": "string",
+            "sourceColumn": "Column2",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column3",
+            "dataType": "string",
+            "sourceColumn": "Column3",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column3",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column4",
+            "dataType": "string",
+            "sourceColumn": "Column4",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column4",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column5",
+            "dataType": "string",
+            "sourceColumn": "Column5",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column5",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column6",
+            "dataType": "string",
+            "sourceColumn": "Column6",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column6",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column7",
+            "dataType": "string",
+            "sourceColumn": "Column7",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column8",
+            "dataType": "string",
+            "sourceColumn": "Column8",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column8",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column9",
+            "dataType": "string",
+            "sourceColumn": "Column9",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column9",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column10",
+            "dataType": "string",
+            "sourceColumn": "Column10",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column10",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column11",
+            "dataType": "string",
+            "sourceColumn": "Column11",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column11",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column12",
+            "dataType": "string",
+            "sourceColumn": "Column12",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column12",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column13",
+            "dataType": "string",
+            "sourceColumn": "Column13",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column13",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column14",
+            "dataType": "string",
+            "sourceColumn": "Column14",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column14",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column15",
+            "dataType": "string",
+            "sourceColumn": "Column15",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column15",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column16",
+            "dataType": "string",
+            "sourceColumn": "Column16",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column16",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column17",
+            "dataType": "string",
+            "sourceColumn": "Column17",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column17",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column18",
+            "dataType": "string",
+            "sourceColumn": "Column18",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column18",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column19",
+            "dataType": "string",
+            "sourceColumn": "Column19",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column19",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column20",
+            "dataType": "string",
+            "sourceColumn": "Column20",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column20",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column21",
+            "dataType": "string",
+            "sourceColumn": "Column21",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column21",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column22",
+            "dataType": "string",
+            "sourceColumn": "Column22",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column22",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column23",
+            "dataType": "string",
+            "sourceColumn": "Column23",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column23",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column24",
+            "dataType": "string",
+            "sourceColumn": "Column24",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column24",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column25",
+            "dataType": "string",
+            "sourceColumn": "Column25",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column25",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column26",
+            "dataType": "string",
+            "sourceColumn": "Column26",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column26",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column27",
+            "dataType": "string",
+            "sourceColumn": "Column27",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column27",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column28",
+            "dataType": "string",
+            "sourceColumn": "Column28",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column28",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column29",
+            "dataType": "string",
+            "sourceColumn": "Column29",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column29",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column30",
+            "dataType": "string",
+            "sourceColumn": "Column30",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column30",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column31",
+            "dataType": "string",
+            "sourceColumn": "Column31",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column31",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column32",
+            "dataType": "string",
+            "sourceColumn": "Column32",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column32",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column33",
+            "dataType": "string",
+            "sourceColumn": "Column33",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column33",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column34",
+            "dataType": "string",
+            "sourceColumn": "Column34",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column34",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column35",
+            "dataType": "string",
+            "sourceColumn": "Column35",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column35",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column36",
+            "dataType": "string",
+            "sourceColumn": "Column36",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column36",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column37",
+            "dataType": "string",
+            "sourceColumn": "Column37",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column37",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column38",
+            "dataType": "string",
+            "sourceColumn": "Column38",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column38",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column39",
+            "dataType": "string",
+            "sourceColumn": "Column39",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column39",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column40",
+            "dataType": "string",
+            "sourceColumn": "Column40",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column40",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column41",
+            "dataType": "string",
+            "sourceColumn": "Column41",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Column41",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column42",
+            "dataType": "dateTime",
+            "sourceColumn": "Column42",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Column42",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Column43",
+            "dataType": "dateTime",
+            "sourceColumn": "Column43",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Column43",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "840909f2ed2f4cce84597796f9c1115f_d5858d60_002D05f6_002D4dfd_002Db081_002Dfeeb28bb8e28",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

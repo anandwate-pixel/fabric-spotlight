@@ -1,0 +1,106 @@
+-- Fabric notebook source
+
+-- METADATA ********************
+
+-- META {
+-- META   "kernel_info": {
+-- META     "name": "synapse_pyspark"
+-- META   },
+-- META   "dependencies": {
+-- META     "lakehouse": {
+-- META       "default_lakehouse": "a0228bec-130e-440c-8693-256c0bbd216e",
+-- META       "default_lakehouse_name": "smartcity_environment_lakehouse_bronze",
+-- META       "default_lakehouse_workspace_id": "b32ada8b-2770-4a2d-889e-74882bf450d1",
+-- META       "known_lakehouses": [
+-- META         {
+-- META           "id": "a0228bec-130e-440c-8693-256c0bbd216e"
+-- META         },
+-- META         {
+-- META           "id": "ce7647fb-b572-446d-a575-aee6b2d69c25"
+-- META         },
+-- META         {
+-- META           "id": "ef826477-52d4-4585-a68a-ae651b301c79"
+-- META         }
+-- META       ]
+-- META     }
+-- META   }
+-- META }
+
+-- CELL ********************
+
+-- MAGIC %%pyspark
+-- MAGIC from pyspark.sql import functions as F
+-- MAGIC from pyspark.sql.window import Window
+-- MAGIC from delta.tables import DeltaTable
+-- MAGIC 
+-- MAGIC # 1. Load Silver tables
+-- MAGIC traffic_df = spark.table("smartcity_environment_lakehouse_silver.dbo.trafficapi_kafka_silver")
+-- MAGIC weather_df = spark.table("smartcity_environment_lakehouse_silver.dbo.weatherapi_kafka_silver")
+-- MAGIC 
+-- MAGIC # 2. Join traffic and weather on lat/lon
+-- MAGIC joined_df = (
+-- MAGIC     traffic_df.alias("t")
+-- MAGIC     .join(weather_df.alias("w"),
+-- MAGIC           (F.col("t.lat") == F.col("w.lat")) &
+-- MAGIC           (F.col("t.lon") == F.col("w.lon")),
+-- MAGIC           "inner")
+-- MAGIC     .select(
+-- MAGIC         F.col("t.lat").alias("lat"),
+-- MAGIC         F.col("t.lon").alias("lon"),
+-- MAGIC         F.col("t.city"),
+-- MAGIC         F.col("t.current_time").alias("traffic_time"),
+-- MAGIC         F.col("w.current_time").alias("weather_time"),
+-- MAGIC         F.col("w.temp_c"),
+-- MAGIC         F.col("w.humidity"),
+-- MAGIC         F.col("w.text").alias("condition_text"),   # alias condition fields
+-- MAGIC         F.col("w.icon").alias("condition_icon"),
+-- MAGIC         F.col("w.code").alias("condition_code"),
+-- MAGIC         F.col("w.wind_kph"),
+-- MAGIC         F.col("w.pressure_mb"),
+-- MAGIC         F.col("w.precip_mm"),
+-- MAGIC         F.col("w.cloud"),
+-- MAGIC         F.col("t.congestion"),
+-- MAGIC         F.col("t.currentSpeed"),
+-- MAGIC         F.col("t.roadCLosure"),
+-- MAGIC         F.col("w.co").alias("airquality_co"),
+-- MAGIC         F.col("w.no2").alias("airquality_no2"),
+-- MAGIC         F.col("w.o3").alias("airquality_o3"),
+-- MAGIC         F.col("w.so2").alias("airquality_so2"),
+-- MAGIC         F.col("w.is_day")
+-- MAGIC     )
+-- MAGIC )
+-- MAGIC 
+-- MAGIC display(joined_df)
+-- MAGIC # 3. Window function to rank by closest timestamp
+-- MAGIC window_spec = Window.partitionBy("lat", "lon", "traffic_time") \
+-- MAGIC                     .orderBy(F.abs(F.unix_timestamp("traffic_time") - F.unix_timestamp("weather_time")))
+-- MAGIC 
+-- MAGIC weather_ranked = joined_df.withColumn("rn", F.row_number().over(window_spec))
+-- MAGIC 
+-- MAGIC # 4. Keep only closest weather record
+-- MAGIC closest_df = weather_ranked.filter(F.col("rn") == 1).drop("rn")\
+-- MAGIC 
+-- MAGIC 
+-- MAGIC # 5. Ensure Gold table exists (create once if needed)
+-- MAGIC closest_df.write.format("delta").mode("ignore").saveAsTable(
+-- MAGIC     "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_table"
+-- MAGIC )
+-- MAGIC display(closest_df)
+-- MAGIC 
+-- MAGIC # 6. Perform MERGE (upsert) into Gold
+-- MAGIC gold_table = DeltaTable.forName(spark, "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_table")
+-- MAGIC display(gold_table)
+-- MAGIC 
+-- MAGIC gold_table.alias("gold").merge(
+-- MAGIC     closest_df.alias("src"),
+-- MAGIC     "gold.lat = src.lat AND gold.lon = src.lon AND gold.traffic_time = src.traffic_time"
+-- MAGIC ).whenMatchedUpdateAll() \
+-- MAGIC  .whenNotMatchedInsertAll() \
+-- MAGIC  .execute()
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "python",
+-- META   "language_group": "synapse_pyspark"
+-- META }

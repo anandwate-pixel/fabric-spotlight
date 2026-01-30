@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "smartcity_environment_lakehouse_silver"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1b301c79-ae65-a68a-4585-52d4ef826477"
+  }
+}

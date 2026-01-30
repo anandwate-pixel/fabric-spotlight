@@ -1,0 +1,123 @@
+table smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast
+	lineageTag: c461818b-2407-4f6f-9c23-c171cd6a29ce
+
+	column localtime
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 146a0a55-03fc-4b9d-9570-d17d7d75a1e5
+		summarizeBy: none
+		sourceColumn: localtime
+
+		annotation SummarizationSetBy = Automatic
+
+	column Predicted_temp_c
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9817c394-92d2-4855-a059-3ea3aedb47bf
+		summarizeBy: sum
+		sourceColumn: Predicted_temp_c
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Predicted_wind_kph
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1983b84d-bc39-4557-8903-a51d5ccf0565
+		summarizeBy: sum
+		sourceColumn: Predicted_wind_kph
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Predicted_AvgSpeed_kmph
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 983c953d-0793-413d-b546-d3d9f440b41c
+		summarizeBy: sum
+		sourceColumn: Predicted_AvgSpeed_kmph
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Predicted_Congestion
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 12c9fa2c-336c-4b1d-95ef-593b88077972
+		summarizeBy: sum
+		sourceColumn: Predicted_Congestion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column city
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 402d3c05-8ef6-4212-b158-c39305e0fd9d
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column datetime = LEFT(smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast[localtime], 19)
+		lineageTag: 6ab849c2-b1d5-474d-bf7f-3845dc7cedc8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour = ```
+			smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast[datetime] 
+			```
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: cff0288d-028c-4954-b9e5-e71b2e4d7fc4
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column StartOfHour = ```
+			
+			TIME( HOUR('smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast'[datetime]), 0, 0 )
+			
+			
+			```
+		formatString: hh:nn
+		lineageTag: c698d424-9529-4825-9d22-a9770a6903c5
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Newdate = DATE(YEAR([datetime]), MONTH([datetime]), DAY([datetime]))
+		formatString: General Date
+		lineageTag: 085d2ecb-2a11-42df-9d03-24b7076b4de9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("ugpczvjbpsyupavdgotuwh3uxa-rpncvm3qe4wuvce6osecx5cq2e.datawarehouse.fabric.microsoft.com", "smartcity_environment_lakehouse_gold"),
+				    dbo_smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast = Source{[Schema="dbo",Item="smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast"]}[Data]
+				in
+				    dbo_smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast
+
+	annotation PBI_ResultType = Table
+

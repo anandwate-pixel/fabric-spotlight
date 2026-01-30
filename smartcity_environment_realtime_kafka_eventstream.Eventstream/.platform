@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "smartcity_environment_realtime_kafka_eventstream"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2b95915d-8f92-9f7f-41b6-e2a4494f0590"
+  }
+}
