@@ -1,0 +1,646 @@
+{
+  "schema_version": 67,
+  "pagesNavWidth": 313.33335876464844,
+  "tiles": [
+    {
+      "id": "e8b03d61-f934-443d-9a53-590585aad64e",
+      "title": "Ingestion Records by Table",
+      "layout": {
+        "x": 0,
+        "y": 2,
+        "width": 11,
+        "height": 6
+      },
+      "pageId": "da1b3145-93e9-45b5-8afd-2d6942ede64f",
+      "visualType": "timechart",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "8b8e19c1-d24b-4fa6-8db6-95e43f0b9b16"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "b1690063-1b66-4592-b356-85acee90aaed",
+            "columns": [],
+            "label": "",
+            "yAxisMinimumValue": null,
+            "yAxisMaximumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "xColumnTitle": "",
+        "xColumn": "Time",
+        "yColumns": [
+          "IngestionCount"
+        ],
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "legendLocation": "left",
+        "forceAxisTicks": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "dataPointsTooltip": {
+          "all": true,
+          "limit": 1
+        }
+      }
+    },
+    {
+      "id": "3d131d8e-f65a-43b2-9596-fcd2c47f2542",
+      "title": "SmartCity Real-time Dashboard",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 22,
+        "height": 7
+      },
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "visualType": "markdownCard",
+      "markdownText": "The Real-Time Traffic & Weather Dashboard is your one-stop shop for up-to-date travel information. This dashboard helps you plan safer and more effective travel by combining real-time weather data with the most recent traffic reports.\r\n\r\nAverage Route Safety Index = round(Weather Score+Traffic Score/2,2))    \r\n\r\nAverage Rainfall = avg(rainfallAmount)\r\n\r\nTravel Realibility Index TRI = weatherComposite + trafficComposite/2\r\n\r\nAverage Speed Delay = Normal Speed − Actual Speed /Normal Speed × 100\r\n\r\nAverage Traffic Speed: Measures the real-time vehicle speed on major routes.\r\n\r\nTraffic Congestion Level: Shows the percentage of roads currently under heavy traffic.\r\n\r\nTravel Time & Delays: Tracks average travel times and delays caused by congestion or incidents.\r\n\r\nCurrent Weather Conditions: Live temperature, rainfall, humidity, wind speed, and visibility.\r\n\r\nWeather-Linked Traffic Impact: Highlights areas where weather is affecting traffic flow or safety.",
+      "visualOptions": {
+        "pie__topNSlices": null
+      }
+    },
+    {
+      "id": "4da08f3c-ba6c-4293-8ac9-c7c0f766fbef",
+      "title": "Row count of KQL Tables",
+      "layout": {
+        "x": 11,
+        "y": 2,
+        "width": 11,
+        "height": 6
+      },
+      "pageId": "da1b3145-93e9-45b5-8afd-2d6942ede64f",
+      "visualType": "table",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "96b7eb71-f891-4974-befc-29a4a638a1d9"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": false,
+        "colorRulesDisabled": false,
+        "crossFilterDisabled": true,
+        "drillthroughDisabled": false,
+        "crossFilter": [
+          {
+            "interaction": "column",
+            "property": "WeatherRealtimehub",
+            "disabled": false
+          }
+        ],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "9d8a3414-1871-4181-9291-cdb5445c3b82",
+      "title": "Average Air Quality Metrics by City (Last 1 Hour)",
+      "visualType": "column",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 11,
+        "y": 17,
+        "width": 11,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "81c661b2-8812-4f5d-8b3b-80370d95182c"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "04d3aa25-24a6-4a36-9a53-fa30929e82aa",
+      "title": "AirQuality_realtime",
+      "visualType": "pie",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 11,
+        "y": 10,
+        "width": 11,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "c6445a33-40a1-48c0-bee3-bf364007cbda"
+      },
+      "visualOptions": {
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "labelDisabled": false,
+        "pie__label": [
+          "name",
+          "percentage"
+        ],
+        "tooltipDisabled": false,
+        "pie__tooltip": [
+          "name",
+          "percentage",
+          "value"
+        ],
+        "pie__orderBy": "size",
+        "pie__kind": "pie",
+        "pie__topNSlices": null,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "3d4e3db1-27dc-48d9-99c4-ddc6624b5b11",
+      "title": "Traffic Speed Over Time",
+      "visualType": "line",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 11,
+        "y": 26,
+        "width": 11,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "74d9cb04-7db3-4d22-a058-9d5d5b94b061"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "additional": [],
+          "showMultiplePanels": false,
+          "base": {
+            "horizontalLines": [],
+            "yAxisScale": "linear",
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "columns": [],
+            "label": "Average Speed (kmph)",
+            "id": "-1"
+          }
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "Time",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    },
+    {
+      "id": "138d52a9-75ae-4ccc-9da6-543e0acb9271",
+      "title": "Temperature by City (Last 1 Hour)",
+      "visualType": "pie",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 0,
+        "y": 10,
+        "width": 11,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "b6caab8e-79c5-4cbf-bc88-87c2fd7a8ff8"
+      },
+      "visualOptions": {
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "labelDisabled": false,
+        "pie__label": [
+          "name",
+          "percentage"
+        ],
+        "tooltipDisabled": false,
+        "pie__tooltip": [
+          "name",
+          "percentage",
+          "value"
+        ],
+        "pie__orderBy": "name",
+        "pie__kind": "donut",
+        "pie__topNSlices": null,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "9aac6190-f43f-46a9-8425-75ae0720a212",
+      "title": "Air Quality Index by City (Last 1 Hour)",
+      "visualType": "pie",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 0,
+        "y": 17,
+        "width": 11,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "ab04b9f4-38a6-4d10-be4b-30cceb128dc9"
+      },
+      "visualOptions": {
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "labelDisabled": false,
+        "pie__label": [
+          "name",
+          "percentage"
+        ],
+        "tooltipDisabled": false,
+        "pie__tooltip": [
+          "name",
+          "percentage",
+          "value"
+        ],
+        "pie__orderBy": "size",
+        "pie__kind": "donut",
+        "pie__topNSlices": null,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "9ffacdd6-3893-4637-9952-3a7c3638c659",
+      "title": "Weather_Traffic_Realtime",
+      "visualType": "table",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 0,
+        "y": 33,
+        "width": 22,
+        "height": 6
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "d821cd97-02b1-41c5-8a41-3070a53619ce"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "1a20c165-9fc8-45c2-8e85-3bf1006a7aa7",
+      "title": "Last Ingestion Time and Ingestion Rows Count",
+      "visualType": "column",
+      "pageId": "da1b3145-93e9-45b5-8afd-2d6942ede64f",
+      "layout": {
+        "x": 0,
+        "y": 16,
+        "width": 22,
+        "height": 6
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "eb9f52d4-c90a-4ea8-8c65-08f7527a48f4"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "right",
+        "xColumnTitle": "",
+        "xColumn": "LastIngestionTime",
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "dataPointsTooltip": {
+          "all": true,
+          "limit": 5
+        }
+      }
+    },
+    {
+      "id": "ed956eaa-e5d0-40a5-b2b7-729fc4aae12b",
+      "title": "Data Activity Tracker",
+      "visualType": "column",
+      "pageId": "da1b3145-93e9-45b5-8afd-2d6942ede64f",
+      "layout": {
+        "x": 0,
+        "y": 8,
+        "width": 22,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "bcc5df7c-4b07-4aaa-979f-2b12fdab16b0"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "Ingestion Count",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "forceAxisTicks": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "dataPointsTooltip": {
+          "all": true,
+          "limit": 5
+        }
+      }
+    },
+    {
+      "id": "6ec50a08-c44b-45e5-b715-6ce67d42442f",
+      "title": "Stream Data Ingestion Infomation",
+      "visualType": "markdownCard",
+      "pageId": "da1b3145-93e9-45b5-8afd-2d6942ede64f",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 22,
+        "height": 2
+      },
+      "markdownText": "This tab is to visualize the streaming data ingestion progress and how many rows were ingested for the latest ingestion time. This will be useful for identification and troubleshooting of any ingestion related issues.",
+      "visualOptions": {}
+    },
+    {
+      "id": "14bd9fa4-cfb7-4e8d-93d7-fd40b7eccc9f",
+      "title": "Traffic Congestion by City (Last one hour)",
+      "visualType": "bar",
+      "pageId": "1773a538-7161-45eb-815b-dc6318fc096c",
+      "layout": {
+        "x": 0,
+        "y": 26,
+        "width": 11,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "873d2bc2-20a6-4231-ae3e-03892f7125a2"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "c4387b29-abad-4ccf-9e86-62b8fd50c6b7",
+      "displayName": "Time range (by ingestion)",
+      "description": "Time range (by ingestion)",
+      "beginVariableName": "startTime",
+      "endVariableName": "endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 7,
+        "unit": "days"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "f4549525-8e86-4664-be9c-943653c1f907",
+      "name": "SmartCity_Environment_Realtime",
+      "scopeId": "kusto-trident",
+      "kind": "kusto-trident",
+      "clusterUri": "https://trd-uzcawemprcjz4m1970.z8.kusto.fabric.microsoft.com",
+      "workspace": "f032197f-48b3-476c-b347-793a047ed260",
+      "database": "beb8be38-83e5-4713-bd32-43b8962ca061"
+    },
+    {
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "4909e164-6275-b816-4816-142f95a59856",
+      "name": "smartcity_environment_eventhouse_kql_database",
+      "id": "62494430-658a-4f4a-9715-eccfd6b1b56b",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "SmartCity Real-time Dashboard",
+      "id": "1773a538-7161-45eb-815b-dc6318fc096c"
+    },
+    {
+      "name": "SmartCity Real-time_Ingestion_Info",
+      "id": "da1b3145-93e9-45b5-8afd-2d6942ede64f"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "62494430-658a-4f4a-9715-eccfd6b1b56b"
+      },
+      "text": "smartcity_environment_eventhouse_weather_kqltable\n| summarize IngestionCount = count() by Time = bin(ingestion_time(), 1h)\n| extend Table = \"smartcity_weather\"\n| union (\n    smartcity_environment_eventhouse_traffic_kqltable\n    | summarize IngestionCount = count() by Time = bin(ingestion_time(), 1h)\n    | extend Table = \"traffic-smartcity\"\n)\n| order by Time asc\n| render timechart\n    with (\n        title = \"Ingestion Count per Table (Hourly)\",\n        xtitle = \"Time\",\n        ytitle = \"Ingestion Count\"\n    )\n",
+      "id": "8b8e19c1-d24b-4fa6-8db6-95e43f0b9b16",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "62494430-658a-4f4a-9715-eccfd6b1b56b"
+      },
+      "text": "\r\nlet smartcityWeatherCount =  smartcity_environment_eventhouse_weather_kqltable| summarize SmartcityWeather=count();\r\nlet trafficSmartcityCount = smartcity_environment_eventhouse_traffic_kqltable | summarize TrafficSmartcity=count();\r\nsmartcityWeatherCount\r\n| extend joinKey=1\r\n| join kind=fullouter (trafficSmartcityCount | extend joinKey=1) on joinKey\r\n| project SmartcityWeather,  TrafficSmartcity",
+      "id": "96b7eb71-f891-4974-befc-29a4a638a1d9",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "\n\nweatherapi_realtime_table\n| extend City = geo_point_name, IngestionTime = ingestion_time()\n| where IngestionTime > ago(1h)\n| summarize avgNO2=avg(todouble(air_quality_no2)), avgPM10=avg(todouble(air_quality_pm10)), avgPM25=avg(todouble(air_quality_pm25)), avgCO=avg(todouble(air_quality_co)) by City\n| order by City asc\n| render barchart with (\n    title=\"Average Air Quality Metrics by City (Last 1 Hour)\",\n    ytitle=\"Average Value\",\n    xtitle=\"City\",\n    legend=visible\n)",
+      "id": "81c661b2-8812-4f5d-8b3b-80370d95182c",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "weatherapi_realtime_table |\nwhere isnotempty( geo_point_name)\n| summarize avgPM25=avg(toreal(air_quality_pm25)) by City=geo_point_name\n| top 10 by avgPM25\n| render piechart \n    with (\n        title=\"Top 10 Cities by Average PM2.5 Air Quality\",\n        xtitle=\"City\",\n        ytitle=\"Average PM2.5\"\n    )",
+      "id": "c6445a33-40a1-48c0-bee3-bf364007cbda",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "\ntraffic_realtime_table\n| extend EventTime = todatetime(ingestion_time())\n| summarize avgSpeed=avg(AverageSpeed_kmph) by Time=bin(EventTime, 1h)\n| order by Time > ago(1h) asc\n| render timechart \n    with (\n        kind=default,\n        title=\"Traffic Speed Over Time\",\n        xtitle=\"Time\",\n        ytitle=\"Average Speed (km/h)\"\n    )",
+      "id": "74d9cb04-7db3-4d22-a058-9d5d5b94b061",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "\r\nlet weatherKPI = weatherapi_realtime_table\r\n| extend City = geo_point_name, IngestionTime = ingestion_time()\r\n| where IngestionTime > ago(1h)\r\n| summarize maxTempC=max(todouble(temp_c)), minTempC=min(todouble(temp_c)), avgHumidity=avg(todouble(humidity)), WeatherRecords=count() by City\r\n| project City, KPI=\"Weather\", maxTempC, minTempC, avgHumidity, WeatherRecords;\r\nlet trafficKPI = traffic_realtime_table\r\n| extend IngestionTime = ingestion_time()\r\n| where IngestionTime > ago(1h)\r\n| summarize maxCongestion=max(CongestionIndex_percent), minSpeed=min(AverageSpeed_kmph), avgDelay=avg(PeakHourDelay_mins), TrafficRecords=count() by City\r\n| project City, KPI=\"Traffic\", maxCongestion, minSpeed, avgDelay, TrafficRecords;\r\nweatherKPI\r\n| join kind=fullouter (trafficKPI) on City\r\n| project City,\r\n    Weather_maxTempC=maxTempC, Weather_minTempC=minTempC, Weather_avgHumidity=avgHumidity, Weather_count=WeatherRecords,\r\n    Traffic_maxCongestion=maxCongestion, Traffic_minSpeed=minSpeed, Traffic_avgDelay=avgDelay, Traffic_count=TrafficRecords\r\n| top 10 by City\r\n",
+      "id": "b6caab8e-79c5-4cbf-bc88-87c2fd7a8ff8",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "\nweatherapi_realtime_table\n| extend City = geo_point_name, IngestionTime = ingestion_time()\n| where IngestionTime > ago(1h)\n| summarize avgNO2=avg(todouble(air_quality_no2)), avgPM10=avg(todouble(air_quality_pm10)), avgPM25=avg(todouble(air_quality_pm25)), avgCO=avg(todouble(air_quality_co)) by City\n| order by City asc\n| render barchart with (\n    title=\"Average Air Quality Metrics by City (Last 1 Hour)\",\n    ytitle=\"Average Value\",\n    xtitle=\"City\",\n    legend=visible\n)",
+      "id": "ab04b9f4-38a6-4d10-be4b-30cceb128dc9",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "\nweatherapi_realtime_table\n| extend City = location_name, IngestionTime = ingestion_time()\n| where IngestionTime > ago(1h)\n| join kind=inner (\n    traffic_realtime_table\n    | extend IngestionTime = ingestion_time()\n    | where IngestionTime > ago(1h)\n) on City\n| project-away City1, IngestionTime1\n| order by City asc, IngestionTime desc",
+      "id": "d821cd97-02b1-41c5-8a41-3070a53619ce",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "62494430-658a-4f4a-9715-eccfd6b1b56b"
+      },
+      "text": "\nlet weatherIngestion = smartcity_environment_eventhouse_weather_kqltable\n| summarize IngestionCount=count(), LastIngestionTime=max(current_time) by Table=\"weather_realtime_table\";\nlet trafficIngestion = smartcity_environment_eventhouse_traffic_kqltable\n| summarize IngestionCount=count(), LastIngestionTime=max(current_time)by Table=\"traffic_realtime_table\";\nweatherIngestion\n| union trafficIngestion\n| project Table, IngestionCount, LastIngestionTime\n",
+      "id": "eb9f52d4-c90a-4ea8-8c65-08f7527a48f4",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "62494430-658a-4f4a-9715-eccfd6b1b56b"
+      },
+      "text": "let weatherSeries = smartcity_environment_eventhouse_weather_kqltable\n| summarize IngestionCount=count() by Time=bin(ingestion_time(), 1h)\n| project Time, Table=\"weatherapi_realtime_table\", IngestionCount;\nlet trafficSeries = smartcity_environment_eventhouse_traffic_kqltable\n| summarize IngestionCount=count() by Time=bin(ingestion_time(), 1h)\n| project Time, Table=\"traffic_realtime_table\", IngestionCount;\nweatherSeries\n| union trafficSeries\n| order by Time asc\n| render timechart \n    with (\n        kind=default,\n        title=\"Ingestion Count Trend: All Three Tables (Hourly)\",\n        xtitle=\"Time\",\n        ytitle=\"Ingestion Count\",\n        series=Table\n    )    ",
+      "id": "bcc5df7c-4b07-4aaa-979f-2b12fdab16b0",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "f4549525-8e86-4664-be9c-943653c1f907"
+      },
+      "text": "// This KQL query was generated by AI:\n// create a bar graph to show congestion by city for last 1 hour\n//\ntraffic_realtime_table\n| where todatetime(dateTime) > ago(1h)\n| summarize avgCongestion=avg(CongestionIndex_percent) by City\n| render barchart with (\n    title=\"Congestion by City (Last 1 Hour)\",\n    xtitle=\"City\",\n    ytitle=\"Average Congestion (%)\"\n)",
+      "id": "873d2bc2-20a6-4231-ae3e-03892f7125a2",
+      "usedVariables": []
+    }
+  ]
+}
