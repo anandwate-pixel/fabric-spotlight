@@ -1,0 +1,189 @@
+{
+  "schema_version": 67,
+  "tiles": [
+    {
+      "id": "e6d7968f-8ad8-4ec4-92f7-72975427d61d",
+      "title": "Number of records ingested by time",
+      "layout": {
+        "x": 4,
+        "y": 4,
+        "width": 12,
+        "height": 6
+      },
+      "pageId": "dffc01e4-642e-48e7-af8e-a9777617b145",
+      "visualType": "timechart",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "9fb4dd41-f0c5-485c-9053-245d84127b68"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "d2ffe61c-0fbe-4381-9afd-c73a9650c8a4",
+            "columns": [],
+            "label": "",
+            "yAxisMinimumValue": null,
+            "yAxisMaximumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        },
+        "dataPointsTooltip": {
+          "all": false,
+          "limit": 1
+        }
+      }
+    },
+    {
+      "id": "14f2c4c4-d4d3-4e85-8ed3-5cd1066ac03b",
+      "title": "smartcity_environment_eventhouse_weather_kqltable - example dashboard",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 16,
+        "height": 4
+      },
+      "pageId": "dffc01e4-642e-48e7-af8e-a9777617b145",
+      "visualType": "markdownCard",
+      "markdownText": "This dashboard has been automatically generated for table smartcity_environment_eventhouse_weather_kqltable, and can be accessible from the dashboard catalog at any point.\n\nYou can edit the dashboard, customize the visualizations and share with others.\n\nLearn more about Dashboards [here](https://learn.microsoft.com/en-us/azure/data-explorer/azure-data-explorer-dashboards)",
+      "visualOptions": {
+        "pie__topNSlices": null
+      }
+    },
+    {
+      "id": "ede663be-67d7-4f5a-b004-11fa3746aec6",
+      "title": "Row count",
+      "layout": {
+        "x": 0,
+        "y": 4,
+        "width": 4,
+        "height": 6
+      },
+      "pageId": "dffc01e4-642e-48e7-af8e-a9777617b145",
+      "visualType": "card",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "d70a3dfe-8435-44a0-aac1-2036a07a818c"
+      },
+      "visualOptions": {
+        "yAxisRight": false,
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "colorRulesDisabled": false,
+        "pie__topNSlices": null,
+        "colorRules": []
+      }
+    },
+    {
+      "id": "ab09f670-47d2-48b6-8c4c-9418fed7f4c8",
+      "title": "Sample 100 rows",
+      "visualType": "table",
+      "pageId": "dffc01e4-642e-48e7-af8e-a9777617b145",
+      "layout": {
+        "x": 0,
+        "y": 10,
+        "width": 16,
+        "height": 20
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "9d956305-4772-4db2-9f71-c85e10f89f67"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "83f909f6-243f-42de-8b0c-0def614d992d",
+      "displayName": "Time range (by ingestion)",
+      "description": "Time range (by ingestion)",
+      "beginVariableName": "startTime",
+      "endVariableName": "endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 7,
+        "unit": "days"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "8276ca2f-4f4d-4e84-86b3-28a30fcb4509",
+      "name": "smartcity_environment_eventhouse_kql_database",
+      "scopeId": "kusto-trident",
+      "kind": "kusto-trident",
+      "clusterUri": "",
+      "workspace": "00000000-0000-0000-0000-000000000000",
+      "database": "4909e164-6275-b816-4816-142f95a59856"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "dffc01e4-642e-48e7-af8e-a9777617b145"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "8276ca2f-4f4d-4e84-86b3-28a30fcb4509"
+      },
+      "text": "smartcity_environment_eventhouse_weather_kqltable\n| extend ingestionTime = ingestion_time()\n| where ingestionTime between (startTime..endTime)\n| summarize count() by bin(ingestionTime, 5m)",
+      "id": "9fb4dd41-f0c5-485c-9053-245d84127b68",
+      "usedVariables": [
+        "endTime",
+        "startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "8276ca2f-4f4d-4e84-86b3-28a30fcb4509"
+      },
+      "text": "smartcity_environment_eventhouse_weather_kqltable | count",
+      "id": "d70a3dfe-8435-44a0-aac1-2036a07a818c",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "8276ca2f-4f4d-4e84-86b3-28a30fcb4509"
+      },
+      "text": "smartcity_environment_eventhouse_weather_kqltable | take 100",
+      "id": "9d956305-4772-4db2-9f71-c85e10f89f67",
+      "usedVariables": []
+    }
+  ]
+}

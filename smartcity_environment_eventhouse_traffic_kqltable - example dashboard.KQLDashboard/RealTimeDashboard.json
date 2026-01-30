@@ -1,0 +1,181 @@
+{
+  "schema_version": "44",
+  "title": "smartcity_environment_eventhouse_traffic_kqltable - example dashboard",
+  "autoRefresh": {
+    "enabled": false
+  },
+  "baseQueries": [],
+  "tiles": [
+    {
+      "id": "97ecb826-63c3-4946-9bb0-7d61868b89f7",
+      "title": "Number of records ingested by time",
+      "layout": {
+        "x": 4,
+        "y": 4,
+        "width": 12,
+        "height": 6
+      },
+      "pageId": "c9c6a75e-91a3-49a4-a980-5414798971c2",
+      "visualType": "timechart",
+      "description": "",
+      "query": {
+        "kind": "inline",
+        "dataSource": {
+          "kind": "inline",
+          "dataSourceId": "cdcd2829-8b55-4107-9706-0035c63ab6d3"
+        },
+        "usedVariables": [
+          "endTime",
+          "startTime"
+        ],
+        "text": "smartcity_environment_eventhouse_traffic_kqltable\n| extend ingestionTime = ingestion_time()\n| where ingestionTime between (startTime..endTime)\n| summarize count() by bin(ingestionTime, 5m)"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "1e3d814f-09e3-4bce-be7f-3b48e556a056",
+            "columns": [],
+            "label": "",
+            "yAxisMinimumValue": null,
+            "yAxisMaximumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": []
+      }
+    },
+    {
+      "id": "5bc51628-508b-459e-b576-3fb8b0e8ec9c",
+      "title": "smartcity_environment_eventhouse_traffic_kqltable - example dashboard",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 16,
+        "height": 4
+      },
+      "pageId": "c9c6a75e-91a3-49a4-a980-5414798971c2",
+      "visualType": "markdownCard",
+      "description": "",
+      "query": {
+        "kind": "inline",
+        "usedVariables": [],
+        "text": "This dashboard has been automatically generated for table smartcity_environment_eventhouse_traffic_kqltable, and can be accessible from the dashboard catalog at any point.\n\nYou can edit the dashboard, customize the visualizations and share with others.\n\nLearn more about Dashboards [here](https://learn.microsoft.com/en-us/azure/data-explorer/azure-data-explorer-dashboards)"
+      },
+      "visualOptions": {
+        "pie__TopNSlices": null
+      }
+    },
+    {
+      "id": "d4a254c2-5b37-41f6-b04d-5cd173ecd1a4",
+      "title": "Row count",
+      "layout": {
+        "x": 0,
+        "y": 4,
+        "width": 4,
+        "height": 6
+      },
+      "pageId": "c9c6a75e-91a3-49a4-a980-5414798971c2",
+      "visualType": "card",
+      "description": "",
+      "query": {
+        "kind": "inline",
+        "dataSource": {
+          "kind": "inline",
+          "dataSourceId": "cdcd2829-8b55-4107-9706-0035c63ab6d3"
+        },
+        "usedVariables": [],
+        "text": "smartcity_environment_eventhouse_traffic_kqltable | count"
+      },
+      "visualOptions": {
+        "yAxisRight": false,
+        "multiStat__textSize": "auto",
+        "multiStat__valueColumn": null,
+        "pie__TopNSlices": null,
+        "colorRulesDisabled": false,
+        "colorRules": [],
+        "colorStyle": "light"
+      }
+    },
+    {
+      "id": "dabfc1dd-9be9-49e2-b599-04c24343f3f9",
+      "title": "Sample 100 rows",
+      "description": "",
+      "visualType": "table",
+      "pageId": "c9c6a75e-91a3-49a4-a980-5414798971c2",
+      "layout": {
+        "x": 0,
+        "y": 10,
+        "width": 16,
+        "height": 20
+      },
+      "query": {
+        "kind": "inline",
+        "dataSource": {
+          "kind": "inline",
+          "dataSourceId": "cdcd2829-8b55-4107-9706-0035c63ab6d3"
+        },
+        "usedVariables": [],
+        "text": "smartcity_environment_eventhouse_traffic_kqltable | take 100"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRules": [],
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": []
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "4938b408-28f7-4024-a012-90e363fbee76",
+      "displayName": "Time range (by ingestion)",
+      "beginVariableName": "startTime",
+      "endVariableName": "endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 7,
+        "unit": "days"
+      },
+      "showOnPages": {
+        "kind": "all"
+      },
+      "description": "Time range (by ingestion)"
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "cdcd2829-8b55-4107-9706-0035c63ab6d3",
+      "name": "smartcity_environment_eventhouse_kql_database",
+      "scopeId": "kusto-trident",
+      "kind": "kusto-trident",
+      "clusterUri": "",
+      "workspace": "00000000-0000-0000-0000-000000000000",
+      "database": "4909e164-6275-b816-4816-142f95a59856"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "c9c6a75e-91a3-49a4-a980-5414798971c2"
+    }
+  ]
+}

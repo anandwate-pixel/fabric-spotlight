@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "Copy of smartcity_environment_eventhouse_weather_kqltable - example dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b84db946-8d0c-9c00-4c85-96d7be55f29a"
+  }
+}
