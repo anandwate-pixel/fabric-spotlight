@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Cleaning lakehouse"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "78faef5e-43ca-bc35-4639-ddc2e7829563"
+  }
+}
