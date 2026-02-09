@@ -2880,6 +2880,12 @@
                 "type": "DateTime",
                 "fields": null,
                 "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
               }
             ]
           }
@@ -3232,6 +3238,12 @@
                 "type": "DateTime",
                 "fields": null,
                 "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
               }
             ]
           }
@@ -3570,12 +3582,8 @@
               "column": {
                 "expressionType": "ColumnReference",
                 "node": null,
-                "columnName": "location",
-                "columnPathSegments": [
-                  {
-                    "field": "name"
-                  }
-                ]
+                "columnName": "city",
+                "columnPathSegments": []
               }
             },
             "alias": "name"
@@ -4229,6 +4237,18 @@
               "arguments": []
             },
             "alias": "current_time"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "city",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "city"
           }
         ]
       },

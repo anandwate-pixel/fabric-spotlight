@@ -24,16 +24,16 @@
 
 import pandas as pd
 import numpy as np
-from datetime import datetime, timedelta
 import pytz
+from datetime import datetime, timedelta
 import pyspark.sql.functions as F
-from prophet import Prophet
+from sklearn.multioutput import MultiOutputRegressor
+from xgboost import XGBRegressor
 
 # --------------------------------------------------
 # 1. Time Configuration (IST)
 # --------------------------------------------------
 ist = pytz.timezone("Asia/Kolkata")
-
 current_ist = datetime.now(ist).replace(minute=0, second=0, microsecond=0)
 
 future_times = pd.date_range(
@@ -56,29 +56,7 @@ cities = (
 )
 
 # --------------------------------------------------
-# 3. Prophet Training Function
-# --------------------------------------------------
-def train_prophet(df, time_col, target_col):
-    prophet_df = (
-        df[[time_col, target_col]]
-        .dropna()
-        .rename(columns={time_col: "ds", target_col: "y"})
-    )
-
-    prophet_df["ds"] = pd.to_datetime(prophet_df["ds"]).dt.tz_localize(None)
-    prophet_df = prophet_df.sort_values("ds")
-
-    model = Prophet(
-        daily_seasonality=True,
-        weekly_seasonality=True,
-        yearly_seasonality=False
-    )
-    model.fit(prophet_df)
-
-    return model
-
-# --------------------------------------------------
-# 4. Forecast Loop Per City
+# 3. Forecast Loop Per City
 # --------------------------------------------------
 all_forecasts = []
 
@@ -96,80 +74,95 @@ for city_name in cities:
     if df_pd.empty:
         continue
 
-    # Ensure datetime columns exist
+    # Convert to numeric
+    for col in ["temp_c", "wind_kph", "currentSpeed", "congestion"]:
+        df_pd[col] = pd.to_numeric(df_pd[col], errors="coerce")
+
+    # Drop NaNs
+    df_pd = df_pd.dropna(subset=["temp_c", "wind_kph", "currentSpeed", "congestion"])
+
+    # Feature engineering
     df_pd["weather_time"] = pd.to_datetime(df_pd["weather_time"]).dt.tz_localize(None)
-    df_pd["traffic_time"] = pd.to_datetime(df_pd["traffic_time"]).dt.tz_localize(None)
+    df_pd["hour"] = df_pd["weather_time"].dt.hour
+    df_pd["dayofweek"] = df_pd["weather_time"].dt.dayofweek
 
     # -----------------------------
-    # Train Prophet Models
+    # Train regression model for temp, speed, congestion
     # -----------------------------
-    temp_model = train_prophet(df_pd, "weather_time", "temp_c")
-    wind_model = train_prophet(df_pd, "weather_time", "wind_kph")
+    X = df_pd[["hour", "dayofweek"]]
+    y = df_pd[["temp_c", "currentSpeed", "congestion"]]
 
-    speed_model = train_prophet(df_pd, "traffic_time", "currentSpeed")
-    congestion_model = train_prophet(df_pd, "traffic_time", "congestion")
+    model = MultiOutputRegressor(XGBRegressor(n_estimators=200, max_depth=5))
+    model.fit(X, y)
 
-    # -----------------------------
-    # Future DataFrames
-    # -----------------------------
-    future_weather = pd.DataFrame({
-        "ds": future_times.tz_localize(None)
+    # Future features
+    future_df = pd.DataFrame({
+        "hour": future_times.hour,
+        "dayofweek": future_times.dayofweek
     })
 
-    future_traffic = pd.DataFrame({
-        "ds": future_times.tz_localize(None)
-    })
+    preds = model.predict(future_df)
+
+    preds_df = pd.DataFrame(preds, columns=[
+        "Predicted_temp_c", "Predicted_AvgSpeed_kmph", "Predicted_Congestion"
+    ])
 
     # -----------------------------
-    # Predictions
+    # Wind forecast: historical average + gusts
     # -----------------------------
-    temp_fc = temp_model.predict(future_weather)
-    wind_fc = wind_model.predict(future_weather)
+    hourly_avg_wind = df_pd.groupby("hour")["wind_kph"].mean()
+    predicted_wind = []
+    for h in future_times.hour:
+        base = hourly_avg_wind.get(h, df_pd["wind_kph"].mean())
+        gust = np.random.normal(0, 2)   # ±2 km/h variability
+        predicted_wind.append(np.clip(base + gust, 0, 150))
 
-    speed_fc = speed_model.predict(future_traffic)
-    congestion_fc = congestion_model.predict(future_traffic)
+    preds_df["Predicted_wind_kph"] = predicted_wind
 
     # -----------------------------
-    # Final Output Per City
+    # Clip predictions to realistic ranges
     # -----------------------------
+    preds_df["Predicted_temp_c"] = np.clip(preds_df["Predicted_temp_c"], -10, 50)
+    preds_df["Predicted_AvgSpeed_kmph"] = np.clip(preds_df["Predicted_AvgSpeed_kmph"], 0, 120)
+    preds_df["Predicted_Congestion"] = np.clip(preds_df["Predicted_Congestion"], 0, 100)
+
     forecast_df = pd.DataFrame({
         "city": city_name,
-        "localtime": future_times.astype(str),
-        "Predicted_temp_c": temp_fc["yhat"].values,
-        "Predicted_wind_kph": wind_fc["yhat"].values,
-        "Predicted_AvgSpeed_kmph": speed_fc["yhat"].values,
-        "Predicted_Congestion": np.clip(congestion_fc["yhat"].values, 0, 100)
-    })
+        "localtime": future_times.astype(str)
+    }).join(preds_df)
 
     all_forecasts.append(forecast_df)
 
 # --------------------------------------------------
-# 5. Combine All Cities
+# 4. Combine All Cities
 # --------------------------------------------------
 final_forecast_df = pd.concat(all_forecasts, ignore_index=True)
+final_forecast_df = final_forecast_df.loc[:, ~final_forecast_df.columns.duplicated()]
+
 display(final_forecast_df)
 
-# --------------------------------------------------
-# 6. Save to Lakehouse
-# --------------------------------------------------
+# ---------------# Remove duplicate columns
+#final_forecast_df = final_forecast_df.loc[:, ~final_forecast_df.columns.duplicated()]
 
-# Historical append
+# 5. Save to Lakehouse
+# --------------------------------------------------
 spark.createDataFrame(final_forecast_df) \
     .write.mode("append") \
     .format("delta") \
+    .option("mergeSchema", "false") \
     .saveAsTable(
         "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current"
     )
 
-# Latest snapshot overwrite
 spark.createDataFrame(final_forecast_df) \
     .write.mode("overwrite") \
     .format("delta") \
+    .option("mergeSchema", "false") \
     .saveAsTable(
         "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast"
     )
 
-print("✅ Prophet-based forecasts saved successfully")
+print("✅ Hybrid forecasts saved successfully with realistic bounds")
 
 
 # METADATA ********************

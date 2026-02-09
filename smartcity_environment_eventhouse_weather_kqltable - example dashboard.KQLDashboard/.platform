@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "KQLDashboard",
-    "displayName": "smartcity_environment_eventhouse_weather_kqltable - example dashboard",
-    "description": "smartcity_environment_eventhouse_weather_kqltable - example dashboard"
+    "displayName": "smartcity_environment_realtime_dashboard",
+    "description": "smartcity_environment_realtime_dashboard"
   },
   "config": {
     "version": "2.0",

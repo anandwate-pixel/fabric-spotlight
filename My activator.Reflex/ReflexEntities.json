@@ -1,0 +1,154 @@
+[
+  {
+    "uniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92",
+    "payload": {
+      "name": "smartcity_environment_realtime_dashboard",
+      "description": "Container Description",
+      "type": "kqlQueries"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "19cb6af1-7d0c-43b9-9ab4-3ff03805759a",
+    "payload": {
+      "name": "smartcity_environment_eventhouse_kql_database event",
+      "runSettings": {
+        "executionIntervalInSeconds": 300
+      },
+      "query": {
+        "queryString": "let weatherSeries = smartcity_environment_eventhouse_weather_kqltable\n| summarize IngestionCount=count() by Time=bin(ingestion_time(), 1h)\n| project Time, Table=\"weatherapi_realtime_table\", IngestionCount;\nlet trafficSeries = smartcity_environment_eventhouse_traffic_kqltable\n| summarize IngestionCount=count() by Time=bin(ingestion_time(), 1h)\n| project Time, Table=\"traffic_realtime_table\", IngestionCount;\nweatherSeries\n| union trafficSeries\n| order by Time asc\n| render timechart \n    with (\n        kind=default,\n        title=\"Ingestion Count Trend: All Three Tables (Hourly)\",\n        xtitle=\"Time\",\n        ytitle=\"Ingestion Count\",\n        series=Table\n    )"
+      },
+      "eventhouseItem": {
+        "itemId": "4909e164-6275-b816-4816-142f95a59856",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "KustoDatabase"
+      },
+      "queryParameters": [],
+      "metadata": {
+        "workspaceId": "b32ada8b-2770-4a2d-889e-74882bf450d1",
+        "dashboardId": "e99e09ff-cdeb-4586-8420-e2afb225dca9",
+        "visualId": "ed956eaa-e5d0-40a5-b2b7-729fc4aae12b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      }
+    },
+    "type": "kqlSource-v1"
+  },
+  {
+    "uniqueIdentifier": "d1275adc-a804-4c61-921c-73d5032323ed",
+    "payload": {
+      "name": "smartcity_environment_eventhouse_kql_database event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"968dab05-e85d-4b93-bfaa-c18e2c7770e5\",\"name\":\"SourceEventStep\",\"rows\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"19cb6af1-7d0c-43b9-9ab4-3ff03805759a\"}],\"kind\":\"SourceReference\",\"name\":\"SourceSelector\"}]}],\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "86a7d202-dec0-4563-848c-2d6dded87188",
+    "payload": {
+      "name": "IngestionCount",
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Object"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "5fca2a11-a8d2-4a96-aada-c2dfdc28e120",
+    "payload": {
+      "name": "IngestionCount",
+      "parentObject": {
+        "targetUniqueIdentifier": "86a7d202-dec0-4563-848c-2d6dded87188"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"05997b84-5438-48ef-8d63-fbb1139e1668\",\"name\":\"IdPartStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"IdentityPartAttribute\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "4341ebd1-d1d6-4973-b2dc-9565f2278fff",
+    "payload": {
+      "name": "IngestionCount",
+      "parentObject": {
+        "targetUniqueIdentifier": "86a7d202-dec0-4563-848c-2d6dded87188"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"50edc5da-ac32-44ae-a80b-baafac5bed70\",\"name\":\"IdStructureStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"5fca2a11-a8d2-4a96-aada-c2dfdc28e120\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"IdPart\",\"name\":\"IdPart\"}]}],\"templateId\":\"IdentityTupleAttribute\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "019777fe-61de-438b-92cd-9164908a593c",
+    "payload": {
+      "name": "smartcity_environment_eventhouse_kql_database event",
+      "parentObject": {
+        "targetUniqueIdentifier": "86a7d202-dec0-4563-848c-2d6dded87188"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"steps\":[{\"id\":\"31052e31-01a9-4dd2-90cf-2fff81e93d30\",\"name\":\"SplitEventStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"d1275adc-a804-4c61-921c-73d5032323ed\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"IngestionCount\"},{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"5fca2a11-a8d2-4a96-aada-c2dfdc28e120\"}],\"kind\":\"AttributeReference\",\"name\":\"idPart\",\"type\":\"complex\"}],\"kind\":\"FieldIdMapping\",\"name\":\"FieldIdMapping\"},{\"arguments\":[{\"name\":\"isAuthoritative\",\"type\":\"boolean\",\"value\":true}],\"kind\":\"EventOptions\",\"name\":\"SplitEventOptions\"}]}],\"templateId\":\"SplitEvent\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "835c959c-702a-423c-89f7-c466219ae9f4",
+    "payload": {
+      "name": "Table",
+      "parentObject": {
+        "targetUniqueIdentifier": "86a7d202-dec0-4563-848c-2d6dded87188"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"steps\":[{\"id\":\"b01bd1d1-eddc-42ae-a2b4-c3a2a4698668\",\"name\":\"EventSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"019777fe-61de-438b-92cd-9164908a593c\"}],\"kind\":\"EventReference\",\"name\":\"event\",\"type\":\"complex\"}],\"kind\":\"Event\",\"name\":\"EventSelector\"},{\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"Table\"}],\"kind\":\"EventField\",\"name\":\"EventFieldSelector\"}]},{\"id\":\"a7efc6b8-1185-42a0-8cbb-f6c232a26deb\",\"name\":\"EventComputeStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}],\"kind\":\"TypeAssertion\",\"name\":\"TypeAssertion\"}]}],\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.2.3\"}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "80656eab-e86f-4d48-acca-6af17015674e",
+    "payload": {
+      "name": "Alert! Ingestion Failed",
+      "parentObject": {
+        "targetUniqueIdentifier": "86a7d202-dec0-4563-848c-2d6dded87188"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "74280c9e-3d83-4970-aa49-db365ec16a92"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"steps\":[{\"id\":\"de062fec-d00f-44cd-83db-67a26b100cb3\",\"name\":\"ScalarSelectStep\",\"rows\":[{\"arguments\":[{\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"835c959c-702a-423c-89f7-c466219ae9f4\"}],\"kind\":\"AttributeReference\",\"name\":\"attribute\",\"type\":\"complex\"}],\"kind\":\"Attribute\",\"name\":\"AttributeSelector\"}]},{\"id\":\"28807846-458e-4676-a566-fff2ed01759b\",\"name\":\"ScalarDetectStep\",\"rows\":[{\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IsEqualTo\"},{\"name\":\"threshold\",\"type\":\"number\",\"value\":0}],\"kind\":\"NumberValueCondition\",\"name\":\"NumberValueCondition\"},{\"arguments\":[],\"kind\":\"EachTime\",\"name\":\"OccurrenceOption\"}]},{\"id\":\"a1144024-ed64-4ee5-a4e1-4886afdee384\",\"name\":\"ActStep\",\"rows\":[{\"kind\":\"TeamsMessage\",\"name\":\"TeamsBinding\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"en-us\"},{\"name\":\"recipients\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"jerlourd@publicisgroupe.net\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Activator alert\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"The condition has been met\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}]}]}],\"templateId\":\"AttributeTrigger\",\"templateVersion\":\"1.2.3\"}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]
