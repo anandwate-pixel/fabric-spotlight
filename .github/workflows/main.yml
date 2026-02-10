@@ -17,7 +17,7 @@ jobs:
       - name: Push to Bitbucket
         uses: heussd/mirror-to-bitbucket-github-action@v2
         with:
-          username: ${{ secrets.BB_USER }} # Replace with your Bitbucket username
-          password: ${{ secrets.BB_TOKEN }}
+          username: anand.wate@publicissapient.com # Replace with your Bitbucket username
+          password: ${{ secrets.BITBUCKET_PASSWORD }}
           spacename: TestCD-ws # Replace with your Bitbucket workspace name
           repository: fab-workspace # Replace with the target Bitbucket repository name
