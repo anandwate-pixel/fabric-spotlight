@@ -1,0 +1,23 @@
+name: Mirror to Bitbucket
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on pushes to the main branch (adjust as needed)
+
+jobs:
+  mirror_to_bitbucket:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Essential for a complete clone of the history
+
+      - name: Push to Bitbucket
+        uses: heussd/mirror-to-bitbucket-github-action@v2
+        with:
+          username: ${{ secrets.BB_USER }} # Replace with your Bitbucket username
+          password: ${{ secrets.BB_TOKEN }}
+          spacename: TestCD-ws # Replace with your Bitbucket workspace name
+          repository: fab-workspace # Replace with the target Bitbucket repository name
