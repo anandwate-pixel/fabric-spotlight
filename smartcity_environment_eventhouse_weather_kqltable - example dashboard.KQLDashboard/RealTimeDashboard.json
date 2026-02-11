@@ -1,5 +1,5 @@
 {
-  "schema_version": 67,
+  "schema_version": 68,
   "pagesNavWidth": 313.33335876464844,
   "autoRefresh": {
     "enabled": true,
@@ -187,6 +187,7 @@
         "pie__kind": "pie",
         "pie__topNSlices": null,
         "crossFilter": [],
+        "seriesColors": {},
         "drillthrough": []
       }
     },
@@ -628,7 +629,7 @@
         "kind": "inline",
         "dataSourceId": "62494430-658a-4f4a-9715-eccfd6b1b56b"
       },
-      "text": "smartcity_environment_eventhouse_weather_kqltable |\nwhere isnotempty(name)\n| summarize avgPM25=avg(toreal(pm2_5)) by City=name\n| top 10 by avgPM25\n| render piechart \n    with (\n        title=\"Top 10 Cities by Average PM2.5 Air Quality\",\n        xtitle=\"City\",\n        ytitle=\"Average PM2.5\"\n    )",
+      "text": "smartcity_environment_eventhouse_weather_kqltable |\nwhere ingestion_time() > ago(1h)\n| summarize avgPM25=avg(toreal(pm2_5)) by City=name\n| top 10 by avgPM25\n| render piechart \n    with (\n        title=\"Top 10 Cities by Average PM2.5 Air Quality\",\n        xtitle=\"City\",\n        ytitle=\"Average PM2.5\"\n    )",
       "id": "c6445a33-40a1-48c0-bee3-bf364007cbda",
       "usedVariables": []
     },
