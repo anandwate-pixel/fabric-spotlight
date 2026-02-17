@@ -8,18 +8,18 @@
 -- META   },
 -- META   "dependencies": {
 -- META     "lakehouse": {
--- META       "default_lakehouse": "a0228bec-130e-440c-8693-256c0bbd216e",
+-- META       "default_lakehouse": "72c73d23-04a5-435b-b0ee-6dd6f6da2a00",
 -- META       "default_lakehouse_name": "smartcity_environment_lakehouse_bronze",
--- META       "default_lakehouse_workspace_id": "b32ada8b-2770-4a2d-889e-74882bf450d1",
+-- META       "default_lakehouse_workspace_id": "533b48a0-ffeb-47ef-a6a2-8025527f6dd1",
 -- META       "known_lakehouses": [
 -- META         {
--- META           "id": "a0228bec-130e-440c-8693-256c0bbd216e"
+-- META           "id": "72c73d23-04a5-435b-b0ee-6dd6f6da2a00"
 -- META         },
 -- META         {
--- META           "id": "ce7647fb-b572-446d-a575-aee6b2d69c25"
+-- META           "id": "e77edd51-6f0f-4266-87ed-1d4600e592e9"
 -- META         },
 -- META         {
--- META           "id": "ef826477-52d4-4585-a68a-ae651b301c79"
+-- META           "id": "a7a84c6e-692e-4fc9-ad61-c2c70417ff30"
 -- META         }
 -- META       ]
 -- META     }
@@ -37,31 +37,52 @@
 -- MAGIC traffic_df = spark.table("smartcity_environment_lakehouse_silver.dbo.trafficapi_kafka_silver")
 -- MAGIC weather_df = spark.table("smartcity_environment_lakehouse_silver.dbo.weatherapi_kafka_silver")
 -- MAGIC 
--- MAGIC # 2. Join traffic and weather on lat/lon
--- MAGIC joined_df = (
+-- MAGIC # 2. Normalize city names
+-- MAGIC traffic_df = traffic_df.withColumn("city_norm", F.lower(F.col("city")))
+-- MAGIC weather_df = weather_df.withColumn("city_norm", F.lower(F.col("city")))
+-- MAGIC 
+-- MAGIC # 3. Apply mapping dictionary
+-- MAGIC city_map = {
+-- MAGIC     "gurugram": "gurgaon",
+-- MAGIC     "west delhi": "delhi",
+-- MAGIC     "connaught place": "connaught place",
+-- MAGIC     "new delhi": "new delhi",
+-- MAGIC     "noida": "noida"
+-- MAGIC }
+-- MAGIC for k, v in city_map.items():
+-- MAGIC     traffic_df = traffic_df.withColumn("city_norm", F.when(F.col("city_norm") == k, v).otherwise(F.col("city_norm")))
+-- MAGIC     weather_df = weather_df.withColumn("city_norm", F.when(F.col("city_norm") == k, v).otherwise(F.col("city_norm")))
+-- MAGIC 
+-- MAGIC # 4. Round timestamps to nearest 30 minutes
+-- MAGIC def round_to_half_hour(col):
+-- MAGIC     return F.from_unixtime((F.unix_timestamp(col)/1800).cast("int")*1800)
+-- MAGIC 
+-- MAGIC traffic_df = traffic_df.withColumn("current_time", round_to_half_hour("current_time"))
+-- MAGIC weather_df = weather_df.withColumn("current_time", round_to_half_hour("current_time"))
+-- MAGIC 
+-- MAGIC # 5. Drop rows with any nulls
+-- MAGIC traffic_df = traffic_df.na.drop("any")
+-- MAGIC weather_df = weather_df.na.drop("any")
+-- MAGIC 
+-- MAGIC # 6. Join on city + rounded current_time
+-- MAGIC merged_df = (
 -- MAGIC     traffic_df.alias("t")
--- MAGIC     .join(weather_df.alias("w"),
--- MAGIC           (F.col("t.lat") == F.col("w.lat")) &
--- MAGIC           (F.col("t.lon") == F.col("w.lon")),
--- MAGIC           "inner")
+-- MAGIC     .join(weather_df.alias("w"), ["city_norm", "current_time"], "inner")
 -- MAGIC     .select(
 -- MAGIC         F.col("t.lat").alias("lat"),
 -- MAGIC         F.col("t.lon").alias("lon"),
--- MAGIC         F.col("t.city"),
--- MAGIC         F.col("t.current_time").alias("traffic_time"),
--- MAGIC         F.col("w.current_time").alias("weather_time"),
+-- MAGIC         F.col("t.city").alias("city"),
+-- MAGIC         F.col("current_time"),
 -- MAGIC         F.col("w.temp_c"),
 -- MAGIC         F.col("w.humidity"),
--- MAGIC         F.col("w.text").alias("condition_text"),   # alias condition fields
--- MAGIC         F.col("w.icon").alias("condition_icon"),
--- MAGIC         F.col("w.code").alias("condition_code"),
+-- MAGIC         F.col("w.text").alias("condition_text"),
 -- MAGIC         F.col("w.wind_kph"),
 -- MAGIC         F.col("w.pressure_mb"),
 -- MAGIC         F.col("w.precip_mm"),
 -- MAGIC         F.col("w.cloud"),
 -- MAGIC         F.col("t.congestion"),
 -- MAGIC         F.col("t.currentSpeed"),
--- MAGIC         F.col("t.roadCLosure"),
+-- MAGIC         F.col("t.roadClosure"),
 -- MAGIC         F.col("w.co").alias("airquality_co"),
 -- MAGIC         F.col("w.no2").alias("airquality_no2"),
 -- MAGIC         F.col("w.o3").alias("airquality_o3"),
@@ -70,33 +91,27 @@
 -- MAGIC     )
 -- MAGIC )
 -- MAGIC 
--- MAGIC display(joined_df)
--- MAGIC # 3. Window function to rank by closest timestamp
--- MAGIC window_spec = Window.partitionBy("lat", "lon", "traffic_time") \
--- MAGIC                     .orderBy(F.abs(F.unix_timestamp("traffic_time") - F.unix_timestamp("weather_time")))
+-- MAGIC # 7. Deduplicate by city + current_time
+-- MAGIC deduped_df = merged_df.dropDuplicates(["city","current_time"])
 -- MAGIC 
--- MAGIC weather_ranked = joined_df.withColumn("rn", F.row_number().over(window_spec))
--- MAGIC 
--- MAGIC # 4. Keep only closest weather record
--- MAGIC closest_df = weather_ranked.filter(F.col("rn") == 1).drop("rn")\
--- MAGIC 
--- MAGIC 
--- MAGIC # 5. Ensure Gold table exists (create once if needed)
--- MAGIC closest_df.write.format("delta").mode("ignore").saveAsTable(
+-- MAGIC # 8. Save to Gold table (create if not exists)
+-- MAGIC deduped_df.write.format("delta").mode("overwrite").saveAsTable(
 -- MAGIC     "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_table"
 -- MAGIC )
--- MAGIC display(closest_df)
 -- MAGIC 
--- MAGIC # 6. Perform MERGE (upsert) into Gold
--- MAGIC gold_table = DeltaTable.forName(spark, "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_table")
--- MAGIC display(gold_table)
+-- MAGIC # 9. Upsert (merge) into Gold table
+-- MAGIC gold_table = DeltaTable.forName(
+-- MAGIC     spark, "smartcity_environment_lakehouse_gold.smartcity_environment_weather_traffic_table"
+-- MAGIC )
 -- MAGIC 
 -- MAGIC gold_table.alias("gold").merge(
--- MAGIC     closest_df.alias("src"),
--- MAGIC     "gold.lat = src.lat AND gold.lon = src.lon AND gold.traffic_time = src.traffic_time"
--- MAGIC ).whenMatchedUpdateAll() \
--- MAGIC  .whenNotMatchedInsertAll() \
--- MAGIC  .execute()
+-- MAGIC     deduped_df.alias("src"),
+-- MAGIC     "gold.city = src.city AND gold.current_time = src.current_time"
+-- MAGIC ).whenMatchedUpdateAll().whenNotMatchedInsertAll().execute()
+-- MAGIC 
+-- MAGIC # 10. Preview
+-- MAGIC display(deduped_df.limit(50))
+
 
 -- METADATA ********************
 

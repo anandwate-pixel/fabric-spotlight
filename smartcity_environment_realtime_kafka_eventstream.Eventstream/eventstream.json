@@ -2535,29 +2535,25 @@
   ],
   "destinations": [
     {
-      "id": "7825afbf-191c-44ef-95b6-da0f109e2498",
-      "name": "SmartCity-Environment-Lakehouse-Traffic",
-      "type": "Lakehouse",
+      "id": "1185c9b7-df61-4eda-a30b-9c62fd7a8e43",
+      "name": "smartcity-environment-eventhouse-traffic1",
+      "type": "Eventhouse",
       "properties": {
+        "dataIngestionMode": "DirectIngestion",
         "workspaceId": "00000000-0000-0000-0000-000000000000",
-        "itemId": "0bbd216e-256c-8693-440c-130ea0228bec",
-        "schema": "trafficapi_kafka_schema",
-        "deltaTable": "trafficapi_kafka_table",
-        "inputSerialization": {
-          "type": "Json",
-          "properties": {
-            "encoding": "UTF8"
-          }
-        }
+        "itemId": "4909e164-6275-b816-4816-142f95a59856",
+        "tableName": "smartcity_environment_eventhouse_traffic_kqltable",
+        "connectionName": "smartcity_environment_realtime_ka_qe9afy",
+        "mappingRuleName": "smartcity_environment_eventhouse_traffic_kqltable_mapping"
       },
       "inputNodes": [
         {
-          "name": "Trafficapi_Fields"
+          "name": "TrafficStream"
         }
       ],
       "inputSchemas": [
         {
-          "name": "Trafficapi_Fields",
+          "name": "TrafficStream",
           "schema": {
             "columns": [
               {
@@ -2613,6 +2609,12 @@
                 "type": "Float",
                 "fields": null,
                 "items": null
+              },
+              {
+                "name": "lon",
+                "type": "Float",
+                "fields": null,
+                "items": null
               }
             ]
           }
@@ -2620,7 +2622,7 @@
       ]
     },
     {
-      "id": "8cffc70d-d7bd-404f-a5f8-e863755fe19e",
+      "id": "48cc504f-5975-4b59-b9fe-5938f5045a8b",
       "name": "smartcity-environment-eventhouse-weather",
       "type": "Eventhouse",
       "properties": {
@@ -2628,7 +2630,7 @@
         "workspaceId": "00000000-0000-0000-0000-000000000000",
         "itemId": "4909e164-6275-b816-4816-142f95a59856",
         "tableName": "smartcity_environment_eventhouse_weather_kqltable",
-        "connectionName": "smartcity_environment_realtimeweather",
+        "connectionName": "smartcity_environment_realtime_ka_qebjo9",
         "mappingRuleName": "smartcity_environment_eventhouse_weather_kqltable_mapping"
       },
       "inputNodes": [
@@ -2893,7 +2895,98 @@
       ]
     },
     {
-      "id": "c2c1e7cd-719e-4b55-82c3-6dab861e45f1",
+      "id": "7825afbf-191c-44ef-95b6-da0f109e2498",
+      "name": "SmartCity-Environment-Lakehouse-Traffic",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "0bbd216e-256c-8693-440c-130ea0228bec",
+        "schema": "trafficapi_kafka_schema",
+        "deltaTable": "trafficapi_kafka_table",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "Trafficapi_Fields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "Trafficapi_Fields",
+          "schema": {
+            "columns": [
+              {
+                "name": "normal speed without congestion",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "currentTravelTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "roadClosure",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "freeFlowTravelTime",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "congestion",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "currentSpeed",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "city",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "current_time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lon",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2fda04c-0e21-46d9-83cf-6a17aac7e033",
       "name": "smartcity-environment-eventhouse-traffic",
       "type": "Eventhouse",
       "properties": {
@@ -2901,7 +2994,7 @@
         "workspaceId": "00000000-0000-0000-0000-000000000000",
         "itemId": "4909e164-6275-b816-4816-142f95a59856",
         "tableName": "smartcity_environment_eventhouse_traffic_kqltable",
-        "connectionName": "smartcity_environment_realtime_traffic",
+        "connectionName": "smartcity_environment_realtime_ka_qe2yb9",
         "mappingRuleName": "smartcity_environment_eventhouse_traffic_kqltable_mapping"
       },
       "inputNodes": [
@@ -2964,6 +3057,12 @@
               },
               {
                 "name": "lat",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "lon",
                 "type": "Float",
                 "fields": null,
                 "items": null
@@ -3448,6 +3547,18 @@
               }
             },
             "alias": "lat"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "long",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "lon"
           }
         ]
       },

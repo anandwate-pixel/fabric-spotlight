@@ -8,12 +8,18 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "ce7647fb-b572-446d-a575-aee6b2d69c25",
-# META       "default_lakehouse_name": "smartcity_environment_lakehouse_gold",
-# META       "default_lakehouse_workspace_id": "b32ada8b-2770-4a2d-889e-74882bf450d1",
+# META       "default_lakehouse": "72c73d23-04a5-435b-b0ee-6dd6f6da2a00",
+# META       "default_lakehouse_name": "smartcity_environment_lakehouse_bronze",
+# META       "default_lakehouse_workspace_id": "533b48a0-ffeb-47ef-a6a2-8025527f6dd1",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "ce7647fb-b572-446d-a575-aee6b2d69c25"
+# META           "id": "72c73d23-04a5-435b-b0ee-6dd6f6da2a00"
+# META         },
+# META         {
+# META           "id": "e77edd51-6f0f-4266-87ed-1d4600e592e9"
+# META         },
+# META         {
+# META           "id": "a7a84c6e-692e-4fc9-ad61-c2c70417ff30"
 # META         }
 # META       ]
 # META     }
@@ -81,10 +87,10 @@ for city_name in cities:
     # Drop NaNs
     df_pd = df_pd.dropna(subset=["temp_c", "wind_kph", "currentSpeed", "congestion"])
 
-    # Feature engineering
-    df_pd["weather_time"] = pd.to_datetime(df_pd["weather_time"]).dt.tz_localize(None)
-    df_pd["hour"] = df_pd["weather_time"].dt.hour
-    df_pd["dayofweek"] = df_pd["weather_time"].dt.dayofweek
+    # Feature engineering using current_time
+    df_pd["current_time"] = pd.to_datetime(df_pd["current_time"]).dt.tz_localize(None)
+    df_pd["hour"] = df_pd["current_time"].dt.hour
+    df_pd["dayofweek"] = df_pd["current_time"].dt.dayofweek
 
     # -----------------------------
     # Train regression model for temp, speed, congestion
@@ -128,7 +134,7 @@ for city_name in cities:
 
     forecast_df = pd.DataFrame({
         "city": city_name,
-        "localtime": future_times.astype(str)
+        "current_time": future_times.astype(str)   # use current_time for forecast horizon
     }).join(preds_df)
 
     all_forecasts.append(forecast_df)
@@ -141,9 +147,7 @@ final_forecast_df = final_forecast_df.loc[:, ~final_forecast_df.columns.duplicat
 
 display(final_forecast_df)
 
-# ---------------# Remove duplicate columns
-#final_forecast_df = final_forecast_df.loc[:, ~final_forecast_df.columns.duplicated()]
-
+# --------------------------------------------------
 # 5. Save to Lakehouse
 # --------------------------------------------------
 spark.createDataFrame(final_forecast_df) \

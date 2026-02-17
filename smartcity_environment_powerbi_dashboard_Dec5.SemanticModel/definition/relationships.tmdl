@@ -1,6 +1,0 @@
-relationship 55c2e6fd-33e5-1899-94a4-e4d3469e5317
-	crossFilteringBehavior: bothDirections
-	toCardinality: many
-	fromColumn: smartcity_environment_weather_traffic_table.StartOfHour_traffic
-	toColumn: smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast.StartOfHour
-
