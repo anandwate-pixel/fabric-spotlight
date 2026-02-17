@@ -212,6 +212,238 @@
             ]
           }
         ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelineReturnValue",
+          "value": [
+            {
+              "key": "Error Message",
+              "value": {
+                "type": "Expression",
+                "content": "@activity('Weatherapi Bronze to SIlver').error.message"
+              }
+            }
+          ],
+          "setSystemVariable": true
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Copy Bronze to Silver Error_ Weather",
+        "dependsOn": [
+          {
+            "activity": "Weatherapi Bronze to SIlver",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelineReturnValue",
+          "value": [
+            {
+              "key": "Error Message",
+              "value": {
+                "type": "Expression",
+                "content": "@activity('Trafficapi Bronze to Silver').error.message"
+              }
+            }
+          ],
+          "setSystemVariable": true
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Copy Bronze to Silver Error_ Traffic",
+        "dependsOn": [
+          {
+            "activity": "Trafficapi Bronze to Silver",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelineReturnValue",
+          "value": [
+            {
+              "key": "Error Message",
+              "value": {
+                "type": "Expression",
+                "content": "@activity('Silver Data Transformations').error.message"
+              }
+            }
+          ],
+          "setSystemVariable": true
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Silver Data Transformation Error",
+        "dependsOn": [
+          {
+            "activity": "Silver Data Transformations",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelineReturnValue",
+          "value": [
+            {
+              "key": "Error Message",
+              "value": {
+                "type": "Expression",
+                "content": "@activity('Fabric ML Forecast Model').error.message"
+              }
+            }
+          ],
+          "setSystemVariable": true
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Fabric ML Forecast Notebook Error",
+        "dependsOn": [
+          {
+            "activity": "Fabric ML Forecast Model",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "PBISemanticModelRefresh",
+        "typeProperties": {
+          "method": "post",
+          "groupId": "2d460597-4ebb-406f-b6d2-20b62f5e7502",
+          "datasetId": "38f83aa9-dd60-4e0e-97b6-cc5d559dc72c",
+          "commitMode": "Transactional",
+          "waitOnCompletion": true,
+          "operationType": "SemanticModelRefresh"
+        },
+        "externalReferences": {
+          "connection": "384fc2cd-64b9-471a-b9d8-81d98b205358"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Semantic model refresh",
+        "dependsOn": [
+          {
+            "activity": "Fabric ML Forecast Model",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelineReturnValue",
+          "value": [
+            {
+              "key": "Error Message",
+              "value": {
+                "type": "Expression",
+                "content": "@activity('Semantic model refresh').error.message"
+              }
+            }
+          ],
+          "setSystemVariable": true
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Semantic Model Refresh Error",
+        "dependsOn": [
+          {
+            "activity": "Semantic model refresh",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "<p>Hi Team,</p>\n<p><br></p>\n<p>Please find the below pipeline details,</p>\n<p><br></p>\n<p>Pipeline @{pipeline().RunId}</p>\n<p>Pipeline @{pipeline().PipelineName}</p>\n<p>Thanks</p>\n<p>Fabric Team</p>",
+          "to": "jerlourd@publicisgroupe.net",
+          "subject": "Pipeline Notifications"
+        },
+        "externalReferences": {
+          "connection": "9e75ba6e-8e80-4652-b55b-93bcb7012f2e"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Office365Email Notifications",
+        "dependsOn": [
+          {
+            "activity": "Set Fabric ML Forecast Notebook Error",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set Semantic Model Refresh Error",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set Silver Data Transformation Error",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set Copy Bronze to Silver Error_ Weather",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Set Copy Bronze to Silver Error_ Traffic",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          },
+          {
+            "activity": "Semantic model refresh",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
       }
     ]
   }
