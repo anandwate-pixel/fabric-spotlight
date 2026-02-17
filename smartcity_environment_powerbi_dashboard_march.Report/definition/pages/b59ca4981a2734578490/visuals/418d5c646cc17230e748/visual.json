@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "418d5c646cc17230e748",
+  "position": {
+    "x": 978.90516505571065,
+    "y": 73.701354125816053,
+    "z": 3000,
+    "height": 71.8115758148977,
+    "width": 283.46674663775406,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_table"
+                        }
+                      },
+                      "Property": "congestion"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(smartcity_environment_weather_traffic_table.congestion)",
+              "nativeQueryRef": "Current Congestion",
+              "displayName": "Current Congestion"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "smartcity_environment_weather_traffic_table"
+                      }
+                    },
+                    "Property": "congestion"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

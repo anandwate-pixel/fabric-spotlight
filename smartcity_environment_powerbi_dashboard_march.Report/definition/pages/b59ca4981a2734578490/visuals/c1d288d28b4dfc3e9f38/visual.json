@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "c1d288d28b4dfc3e9f38",
+  "position": {
+    "x": 12.876304023845007,
+    "y": 164.17287630402384,
+    "z": 5000,
+    "height": 555.82712369597618,
+    "width": 600.89418777943365,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DateHourBridge"
+                    }
+                  },
+                  "Property": "Hour"
+                }
+              },
+              "queryRef": "DateHourBridge.Hour",
+              "nativeQueryRef": "Hour",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_table"
+                        }
+                      },
+                      "Property": "currentSpeed"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(smartcity_environment_weather_traffic_table.currentSpeed)",
+              "nativeQueryRef": "Average of currentSpeed"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current"
+                        }
+                      },
+                      "Property": "Predicted_AvgSpeed_kmph"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current.Predicted_AvgSpeed_kmph)",
+              "nativeQueryRef": "Average of Predicted_AvgSpeed_kmph"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DateHourBridge"
+                  }
+                },
+                "Property": "Hour"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "zoom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showOnValueAxis": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showOnCategoryAxis": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "start": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_table"
+                        }
+                      },
+                      "Property": "StartOfHour_traffic"
+                    }
+                  },
+                  "Function": 2
+                }
+              }
+            },
+            "gridlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'dashed'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Predicted_Avg_Speed and Current Avg_Speed by Hour'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

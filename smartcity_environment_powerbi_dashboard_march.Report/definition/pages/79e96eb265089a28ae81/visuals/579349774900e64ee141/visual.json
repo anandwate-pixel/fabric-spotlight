@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "579349774900e64ee141",
+  "position": {
+    "x": 665.20196544326291,
+    "y": 64.252462571224257,
+    "z": 1000,
+    "height": 103.93780710050983,
+    "width": 580.16194145193663,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast"
+                        }
+                      },
+                      "Property": "Predicted_wind_kph"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast.Predicted_wind_kph)",
+              "nativeQueryRef": "Predicted wind Speed (kmph)",
+              "displayName": "Predicted wind Speed (kmph)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast"
+                      }
+                    },
+                    "Property": "Predicted_wind_kph"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

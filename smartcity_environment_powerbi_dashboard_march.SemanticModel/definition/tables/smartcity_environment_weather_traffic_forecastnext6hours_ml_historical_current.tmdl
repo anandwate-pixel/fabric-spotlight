@@ -1,0 +1,111 @@
+table smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current
+	lineageTag: b9f109d6-0d8d-4a94-81d5-0175c6e9da93
+	sourceLineageTag: 3015d4cc-fec7-4545-918a-054b77b45ac2
+
+	column city
+		dataType: string
+		lineageTag: 6c49f7f0-aebb-4414-96de-1f7a178e68fd
+		sourceLineageTag: 3d2d2a1c-521b-4053-a5c2-3ad9849975dc
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = User
+
+	column current_time
+		dataType: string
+		lineageTag: bc3f787a-4c65-4e70-9e06-c3d27f378c06
+		sourceLineageTag: db47481b-ca26-4510-bf06-f6cd646aadd8
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: current_time
+
+		annotation SummarizationSetBy = User
+
+	column Predicted_temp_c
+		dataType: double
+		lineageTag: d52895e8-5a0a-421f-84b2-8834ceece516
+		sourceLineageTag: 4163f813-81d4-46fb-98ad-482b06f13109
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Predicted_temp_c
+
+		annotation SummarizationSetBy = User
+
+	column Predicted_AvgSpeed_kmph
+		dataType: double
+		lineageTag: d29aac3e-7f83-43c9-a743-f1f9d3dcd972
+		sourceLineageTag: 996137b3-9cbf-4f3f-9af7-98c54c59e365
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Predicted_AvgSpeed_kmph
+
+		annotation SummarizationSetBy = User
+
+	column Predicted_Congestion
+		dataType: double
+		lineageTag: 65016e0d-5238-4e8f-bf5a-5544b1b44955
+		sourceLineageTag: d19a38c2-e23e-4568-a6a6-d7ca64f2743f
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Predicted_Congestion
+
+		annotation SummarizationSetBy = User
+
+	column Predicted_wind_kph
+		dataType: double
+		lineageTag: e8f496f7-432f-444e-8fcc-51f7c82877a4
+		sourceLineageTag: 756dba19-cacd-4866-8e2a-6ac70896d190
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: Predicted_wind_kph
+
+		annotation SummarizationSetBy = User
+
+	column CurrentDateHour = ```
+			
+			VAR raw = smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current[current_time]   // text like "2026-02-17 13:00:00+05:30"
+			VAR dt =
+			    DATEVALUE( LEFT(raw, 10) ) +
+			    TIMEVALUE( MID(raw, 12, 8) )
+			RETURN
+			    DATE(YEAR(dt), MONTH(dt), DAY(dt)) + TIME(HOUR(dt), 0, 0)
+			
+			```
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: 27784427-fd56-442c-af3a-f6a86eba87ae
+		summarizeBy: none
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DateOnly = ```
+			
+			DATE(
+			    YEAR([CurrentDateHour]),
+			    MONTH([CurrentDateHour]),
+			    DAY([CurrentDateHour])
+			)
+			
+			```
+		formatString: General Date
+		lineageTag: 2b4765fb-efe9-4c11-b8d5-b34a323ac1fb
+		summarizeBy: none
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current = entity
+		mode: directQuery
+		source
+			entityName: smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current
+			expressionSource: 'DirectQuery to AS - smartcity_environment_powerbi_dashboard_mar 2'
+
+	annotation PBI_ResultType = Exception
+

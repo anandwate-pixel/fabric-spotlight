@@ -1,0 +1,86 @@
+table DateHourBridge
+	lineageTag: c72c7543-7e45-44b1-9980-818309543d92
+
+	column Date
+		formatString: General Date
+		lineageTag: 08c2aaf7-94dc-444e-89a0-5dad58b87650
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		formatString: 0
+		lineageTag: 15788d18-1319-4816-a731-9b03b3933517
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateTime
+		formatString: General Date
+		lineageTag: 0eb5e3c8-8d56-4901-ad16-aa1a88705c2b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DateTime]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateHourKey
+		lineageTag: a409af13-1f51-45db-99fc-4fbdea198943
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DateHourKey]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOnly
+		formatString: General Date
+		lineageTag: 9e66bbff-6999-407e-99c0-87c8d4f3e127
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DateOnly]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: a3e95a77-14be-4296-8786-29977634f04f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Hour]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition DateHourBridge = calculated
+		mode: import
+		source = ```
+				
+				VAR AllDates =
+				    UNION (
+				        SELECTCOLUMNS(smartcity_environment_weather_traffic_table, "dt", smartcity_environment_weather_traffic_table[CurrentDateHour]),
+				        SELECTCOLUMNS(smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current, "dt", smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current[CurrentDateHour]),
+				        SELECTCOLUMNS(smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast, "dt", smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast[CurrentDateHour])
+				    )
+				VAR MinDate = MINX(AllDates, [dt])
+				VAR MaxDate = MAXX(AllDates, [dt])
+				RETURN
+				    GENERATE (
+				        CALENDAR(MinDate, MaxDate),
+				        ADDCOLUMNS(
+				            GENERATESERIES(0, 23, 1),
+				            "DateTime", [Date] + TIME([Value], 0, 0),
+				            "DateHourKey", FORMAT([Date] + TIME([Value], 0, 0), "YYYY-MM-DD HH:MM"),"DateOnly", [Date],
+				            "Hour", FORMAT([Date] + TIME([Value], 0, 0), "HH:mm")
+				        )
+				    )
+				
+				```
+
+	annotation PBI_Id = 9265247f1c594931b057def7f3be2773
+

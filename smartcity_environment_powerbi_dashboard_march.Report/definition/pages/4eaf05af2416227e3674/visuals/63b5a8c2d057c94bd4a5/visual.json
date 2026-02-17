@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "63b5a8c2d057c94bd4a5",
+  "position": {
+    "x": 676.54063530877306,
+    "y": 73.701354125816053,
+    "z": 3000,
+    "height": 71.8115758148977,
+    "width": 270.23829846132554,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast"
+                        }
+                      },
+                      "Property": "Predicted_temp_c"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast.Predicted_temp_c)",
+              "nativeQueryRef": "Predicted_temp_c",
+              "displayName": "Predicted_temp_c"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast"
+                      }
+                    },
+                    "Property": "Predicted_temp_c"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

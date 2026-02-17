@@ -1,0 +1,181 @@
+table smartcity_environment_weather_traffic_table
+	lineageTag: e0196b93-c83e-4151-a5a2-cf7101c2a147
+	sourceLineageTag: [dbo].[smartcity_environment_weather_traffic_table]
+
+	column lat
+		dataType: string
+		lineageTag: 357ff9fc-35ea-406d-a736-31772d0efbe1
+		sourceLineageTag: lat
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+	column lon
+		dataType: string
+		lineageTag: 016befa6-a7b0-4e92-b03a-9706c20bcea5
+		sourceLineageTag: lon
+		summarizeBy: none
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 21a3257a-2004-49d2-b56a-51d3cdd2d996
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_time
+		dataType: string
+		lineageTag: ab175965-a17a-415f-8a25-64a98b5bc4d9
+		sourceLineageTag: current_time
+		summarizeBy: none
+		sourceColumn: current_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_c
+		dataType: string
+		lineageTag: 999b63a7-f14e-4f1b-bea6-a12ce18cec4c
+		sourceLineageTag: temp_c
+		summarizeBy: none
+		sourceColumn: temp_c
+
+		annotation SummarizationSetBy = Automatic
+
+	column humidity
+		dataType: string
+		lineageTag: 72cda23e-4978-4206-8af1-4aa12066a2f7
+		sourceLineageTag: humidity
+		summarizeBy: none
+		sourceColumn: humidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column condition_text
+		dataType: string
+		lineageTag: 99decdd0-64ed-479c-b3eb-f10f92f19cf3
+		sourceLineageTag: condition_text
+		summarizeBy: none
+		sourceColumn: condition_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_kph
+		dataType: string
+		lineageTag: 47ba271b-c7a6-4ce5-b0d4-429702c91c5b
+		sourceLineageTag: wind_kph
+		summarizeBy: none
+		sourceColumn: wind_kph
+
+		annotation SummarizationSetBy = Automatic
+
+	column pressure_mb
+		dataType: string
+		lineageTag: b91abe05-83fc-4a21-af7e-1118e79cdab0
+		sourceLineageTag: pressure_mb
+		summarizeBy: none
+		sourceColumn: pressure_mb
+
+		annotation SummarizationSetBy = Automatic
+
+	column precip_mm
+		dataType: string
+		lineageTag: 181c5ce2-e1d3-4ceb-af41-51c6bca048b5
+		sourceLineageTag: precip_mm
+		summarizeBy: none
+		sourceColumn: precip_mm
+
+		annotation SummarizationSetBy = Automatic
+
+	column cloud
+		dataType: string
+		lineageTag: 40dc6d56-68ec-4915-9933-9d5dc20d4978
+		sourceLineageTag: cloud
+		summarizeBy: none
+		sourceColumn: cloud
+
+		annotation SummarizationSetBy = Automatic
+
+	column congestion
+		dataType: string
+		lineageTag: 513e5b87-5fd6-466f-9f5a-6ac7c1d9826b
+		sourceLineageTag: congestion
+		summarizeBy: none
+		sourceColumn: congestion
+
+		annotation SummarizationSetBy = Automatic
+
+	column currentSpeed
+		dataType: string
+		lineageTag: e919da68-ee60-4670-965e-f727c00a5e34
+		sourceLineageTag: currentSpeed
+		summarizeBy: none
+		sourceColumn: currentSpeed
+
+		annotation SummarizationSetBy = Automatic
+
+	column roadClosure
+		dataType: string
+		lineageTag: 27a8dfb9-dad8-4f87-975c-42be8d1616ba
+		sourceLineageTag: roadClosure
+		summarizeBy: none
+		sourceColumn: roadClosure
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_co
+		dataType: string
+		lineageTag: 189a6b5c-140c-4c72-995e-c99bfa59b599
+		sourceLineageTag: airquality_co
+		summarizeBy: none
+		sourceColumn: airquality_co
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_no2
+		dataType: string
+		lineageTag: 6b5aa87d-3373-4aa7-968b-2eed3ad2bfb9
+		sourceLineageTag: airquality_no2
+		summarizeBy: none
+		sourceColumn: airquality_no2
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_o3
+		dataType: string
+		lineageTag: 96830706-f7ac-4ddc-95bc-0ffd299eb0b1
+		sourceLineageTag: airquality_o3
+		summarizeBy: none
+		sourceColumn: airquality_o3
+
+		annotation SummarizationSetBy = Automatic
+
+	column airquality_so2
+		dataType: string
+		lineageTag: 3016485f-9023-42b9-8779-09652a76540d
+		sourceLineageTag: airquality_so2
+		summarizeBy: none
+		sourceColumn: airquality_so2
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_day
+		dataType: string
+		lineageTag: aa133750-3638-4e14-8c17-0aaba2a2a45c
+		sourceLineageTag: is_day
+		summarizeBy: none
+		sourceColumn: is_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition smartcity_environment_weather_traffic_table = entity
+		mode: directLake
+		source
+			entityName: smartcity_environment_weather_traffic_table
+			expressionSource: 'DirectLake - smartcity_environment_lakehouse_gold'
+

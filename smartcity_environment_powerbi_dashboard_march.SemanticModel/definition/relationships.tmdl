@@ -1,0 +1,15 @@
+relationship fb899155-32ff-876e-86c1-e7bfcf787ec7
+	securityFilteringBehavior: none
+	fromColumn: smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast.CurrentDateHour
+	toColumn: DateHourBridge.DateHourKey
+
+relationship c7c0e8d1-2fa5-5a43-0d0f-661b313d01ad
+	securityFilteringBehavior: none
+	fromColumn: smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current.CurrentDateHour
+	toColumn: DateHourBridge.DateHourKey
+
+relationship bc926661-0043-57b4-07bf-d809bef7e26d
+	securityFilteringBehavior: none
+	fromColumn: smartcity_environment_weather_traffic_table.CurrentDateHour
+	toColumn: DateHourBridge.DateHourKey
+

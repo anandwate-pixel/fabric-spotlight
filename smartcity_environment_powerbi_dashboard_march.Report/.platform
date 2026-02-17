@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "smartcity_environment_powerbi_dashboard_march"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "342cb860-4b3a-99eb-48ae-d57ce7cf790f"
+  }
+}

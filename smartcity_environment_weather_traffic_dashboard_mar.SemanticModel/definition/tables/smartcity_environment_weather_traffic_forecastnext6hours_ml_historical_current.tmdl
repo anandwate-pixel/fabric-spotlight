@@ -1,0 +1,72 @@
+table smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current
+	lineageTag: ba7ceb56-9895-40df-bc54-62d78b720769
+	sourceLineageTag: [dbo].[smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current]
+
+	column city
+		dataType: string
+		lineageTag: 58cdfaa8-27aa-4404-9793-b880e898a7d2
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_time
+		dataType: string
+		lineageTag: 1c747507-3e44-4a56-b037-1afdf9dea543
+		sourceLineageTag: current_time
+		summarizeBy: none
+		sourceColumn: current_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Predicted_temp_c
+		dataType: double
+		lineageTag: 64002ede-36ed-4527-a0b2-c657ba15d5d6
+		sourceLineageTag: Predicted_temp_c
+		summarizeBy: sum
+		sourceColumn: Predicted_temp_c
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Predicted_AvgSpeed_kmph
+		dataType: double
+		lineageTag: 519a0c7d-e5f0-4c1e-9a43-825a4c9923fd
+		sourceLineageTag: Predicted_AvgSpeed_kmph
+		summarizeBy: sum
+		sourceColumn: Predicted_AvgSpeed_kmph
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Predicted_Congestion
+		dataType: double
+		lineageTag: c9154414-1f4b-4e82-8478-e31a20c7dcf0
+		sourceLineageTag: Predicted_Congestion
+		summarizeBy: sum
+		sourceColumn: Predicted_Congestion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Predicted_wind_kph
+		dataType: double
+		lineageTag: 080045c3-66cd-448c-b01e-4640716d0f6c
+		sourceLineageTag: Predicted_wind_kph
+		summarizeBy: sum
+		sourceColumn: Predicted_wind_kph
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current = entity
+		mode: directLake
+		source
+			entityName: smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current
+			expressionSource: 'DirectLake - smartcity_environment_lakehouse_gold'
+

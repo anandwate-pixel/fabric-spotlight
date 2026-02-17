@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "0ff34c8ad0298ec28436",
+  "position": {
+    "x": 0,
+    "y": 73.701354125816053,
+    "z": 1000,
+    "height": 71.8115758148977,
+    "width": 292.91563819234585,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "smartcity_environment_weather_traffic_table"
+                        }
+                      },
+                      "Property": "wind_kph"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(smartcity_environment_weather_traffic_table.wind_kph)",
+              "nativeQueryRef": "First wind_kph"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

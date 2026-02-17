@@ -1,0 +1,9 @@
+expression 'DirectLake - smartcity_environment_lakehouse_gold' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/533b48a0-ffeb-47ef-a6a2-8025527f6dd1/e77edd51-6f0f-4266-87ed-1d4600e592e9", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 64d2425a-1618-482f-9c14-083ea8681218
+
+	annotation PBI_IncludeFutureArtifacts = False
+

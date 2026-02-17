@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "84673db8ccb7169d1b36",
+  "displayName": "Smartcity Executive Dashboard",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

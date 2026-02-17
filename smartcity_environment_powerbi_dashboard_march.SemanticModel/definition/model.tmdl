@@ -1,0 +1,19 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DirectQuery to AS - smartcity_environment_powerbi_dashboard_mar 2"]
+
+ref table smartcity_environment_weather_traffic_table
+ref table smartcity_environment_weather_traffic_forecastnext6hours_ml_forecast
+ref table smartcity_environment_weather_traffic_forecastnext6hours_ml_historical_current
+ref table DateHourBridge
+
+ref cultureInfo en-US
+

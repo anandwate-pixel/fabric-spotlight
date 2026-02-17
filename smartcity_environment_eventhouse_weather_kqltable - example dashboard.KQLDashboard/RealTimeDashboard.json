@@ -186,8 +186,8 @@
         "pie__orderBy": "size",
         "pie__kind": "pie",
         "pie__topNSlices": null,
-        "crossFilter": [],
         "seriesColors": {},
+        "crossFilter": [],
         "drillthrough": []
       }
     },
@@ -568,22 +568,22 @@
   ],
   "dataSources": [
     {
+      "kind": "kusto-trident",
       "id": "f4549525-8e86-4664-be9c-943653c1f907",
       "name": "SmartCity_Environment_Realtime",
-      "scopeId": "kusto-trident",
-      "kind": "kusto-trident",
       "clusterUri": "https://trd-uzcawemprcjz4m1970.z8.kusto.fabric.microsoft.com",
+      "database": "beb8be38-83e5-4713-bd32-43b8962ca061",
       "workspace": "f032197f-48b3-476c-b347-793a047ed260",
-      "database": "beb8be38-83e5-4713-bd32-43b8962ca061"
+      "scopeId": "kusto-trident"
     },
     {
       "kind": "kusto-trident",
-      "scopeId": "kusto-trident",
+      "id": "62494430-658a-4f4a-9715-eccfd6b1b56b",
+      "name": "smartcity_environment_eventhouse_kql_database",
       "clusterUri": "",
       "database": "4909e164-6275-b816-4816-142f95a59856",
-      "name": "smartcity_environment_eventhouse_kql_database",
-      "id": "62494430-658a-4f4a-9715-eccfd6b1b56b",
-      "workspace": "00000000-0000-0000-0000-000000000000"
+      "workspace": "00000000-0000-0000-0000-000000000000",
+      "scopeId": "kusto-trident"
     }
   ],
   "pages": [
@@ -665,7 +665,7 @@
         "kind": "inline",
         "dataSourceId": "62494430-658a-4f4a-9715-eccfd6b1b56b"
       },
-      "text": "let weatherRealtime = smartcity_environment_eventhouse_weather_kqltable\n| extend City = name, WeatherIngestionTime = ingestion_time()\n| where WeatherIngestionTime > ago(1h)\n| where isnotempty(City) \n| summarize \n    AvgTempC = avg(todouble(temp_c)),\n    AvgHumidity = avg(todouble(humidity)),\n    AvgWindKph = avg(todouble(wind_kph)),\n    AvgPressureMb = avg(todouble(pressure_mb)),\n    WeatherRecords = count()\n  by City;\n\nlet trafficRealtime = smartcity_environment_eventhouse_traffic_kqltable\n| extend City = city, TrafficIngestionTime = ingestion_time()\n| where TrafficIngestionTime > ago(1h)\n| where isnotempty(City)\n| summarize \n    AvgCurrentSpeed = avg(todouble(currentSpeed)),\n    AvgCongestion = avg(todouble(congestion)),\n    AvgTravelTime = avg(todouble(currentTravelTime)),\n    AvgFreeFlowTime = avg(todouble(freeFlowTravelTime)),\n    RoadClosure = any(roadClosure),\n    TrafficRecords = count()\n  by City;\n\nweatherRealtime\n| join kind=inner trafficRealtime on City\n| project City,\n    AvgTempC, AvgHumidity, AvgWindKph, AvgPressureMb, WeatherRecords,\n    AvgCurrentSpeed, AvgCongestion, AvgTravelTime, AvgFreeFlowTime, RoadClosure, TrafficRecords\n| order by City asc\n",
+      "text": "let weatherRealtime = smartcity_environment_eventhouse_weather_kqltable\n| extend City = name, WeatherIngestionTime = ingestion_time(), TempVal = todouble(temp_c), HumVal = todouble(humidity), WindVal = todouble(wind_kph), PressVal = todouble(pressure_mb)\n| where WeatherIngestionTime > ago(1h)\n| where isnotempty(City)\n| where isnotnull(TempVal) and isnotnull(HumVal) and isnotnull(WindVal) and isnotnull(PressVal)\n| summarize \n    AvgTempC = avg(TempVal),\n    AvgHumidity = avg(HumVal),\n    AvgWindKph = avg(WindVal),\n    AvgPressureMb = avg(PressVal),\n    WeatherRecords = count()\n  by City;\n\nlet trafficRealtime = smartcity_environment_eventhouse_traffic_kqltable\n| extend City = city, TrafficIngestionTime = ingestion_time(), SpeedVal = todouble(currentSpeed), CongVal = todouble(congestion), TravelVal = todouble(currentTravelTime), FreeFlowVal = todouble(freeFlowTravelTime)\n| where TrafficIngestionTime > ago(1h)\n| where isnotempty(City)\n| where isnotnull(SpeedVal) and isnotnull(CongVal) and isnotnull(TravelVal) and isnotnull(FreeFlowVal)\n| summarize \n    AvgCurrentSpeed = avg(SpeedVal),\n    AvgCongestion = avg(CongVal),\n    AvgTravelTime = avg(TravelVal),\n    AvgFreeFlowTime = avg(FreeFlowVal),\n    RoadClosure = any(roadClosure),\n    TrafficRecords = count()\n  by City;\n  \nweatherRealtime\n| join kind=inner trafficRealtime on City\n| order by City asc\n",
       "id": "d821cd97-02b1-41c5-8a41-3070a53619ce",
       "usedVariables": []
     },

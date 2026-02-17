@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "smartcity_environment_weather_traffic_dashboard_mar"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "49d3d877-a939-9397-449f-b2274ee8730b"
+  }
+}
